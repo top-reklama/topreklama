@@ -9,3 +9,5 @@ Actual WebGL SVG extrusion preserves the supplied TR silhouette, including count
 Motion: route entrance 650ms; viewport reveals 850ms, at most 130ms stagger; product selection 650ms; product tilt 900ms. All use exponential ease-out, no bounce. Reduced-motion preferences disable CSS transitions and animation.
 
 Layout: full-width charcoal hero, ruled service index, asymmetric image-led project composition, large product specimen beside process guidance. Footer remains near-white. Functional catalog cards use product photographs, no decorative icon-card grid. Desktop and mobile are independently reviewed.
+
+Current revision supersedes the 3D hero: a static photographic product composition, clear service names, near-white background. No live 3D or animation controls in the hero. Admin uses a restrained sidebar/inbox/detail pattern with readable 12–14px body, owner-only API authorization and no marketing footer.

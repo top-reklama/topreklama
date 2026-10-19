@@ -1,0 +1,3 @@
+import{adminAccess}from'@/lib/admin';import{bindings,json,fail}from'@/lib/server';import{saveProject}from'@/lib/portfolio-server';
+export async function GET(req:Request){const d=adminAccess(req);if(d)return d;try{const{DB}=bindings();const{results}=await DB.prepare('SELECT * FROM portfolio_projects ORDER BY created_at DESC LIMIT 200').all();const photos=await DB.prepare('SELECT id,project_id,name FROM portfolio_photos WHERE project_id IS NOT NULL ORDER BY created_at').all();return json({projects:results.map(p=>({...p,photos:photos.results.filter(f=>f.project_id===p.id)}))})}catch(e){return fail(e)}}
+export async function POST(req:Request){return adminAccess(req)||saveProject(req)}

@@ -1,0 +1,3 @@
+import{z}from'zod';
+export const projectCategories=['Autografikë','Reklama 3D','Reklama ndriçuese','Shtyp digjital','Display','Tekstil & promocionale'] as const;
+export const projectSchema=z.object({title:z.string().trim().min(2).max(120),titleEn:z.string().trim().max(120).default(''),description:z.string().trim().max(2000).default(''),descriptionEn:z.string().trim().max(2000).default(''),category:z.enum(projectCategories),photoIds:z.array(z.string().uuid()).min(1).max(12).refine(v=>new Set(v).size===v.length),coverId:z.string().uuid(),published:z.boolean(),version:z.number().optional()}).refine(v=>v.photoIds.includes(v.coverId));
