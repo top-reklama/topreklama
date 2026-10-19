@@ -10,6 +10,7 @@ const artwork=await fetch(base+'/api/uploads/'+fileId,{headers:{Cookie:a}});asse
 const design={version:1,productId:'tshirt',name:'API verification',color:'white',size:'M',quantity:2,sides:{front:[{id:'image-test',type:'image',x:.5,y:.4,width:.5,rotation:0,uploadId:fileId,aspect:1}],back:[]},printMethod:'DTF',notes:''};
 assert.equal((await request('/api/designs',j({design}),b)).status,400,'foreign upload rejected');
 assert.equal((await request('/api/designs',j({design:{...design,quantity:0}}))).status,400,'invalid quantity rejected');
+assert.equal((await request('/api/designs',j({design:{...design,productId:'mug'}}))).status,400,'removed product cannot be ordered');
 const saved=await request('/api/designs',j({design}));assert.equal(saved.status,201,JSON.stringify(saved));
 const reopened=await request('/api/designs/'+saved.data.id);assert.deepEqual(reopened.data.design,design,'saved design round-trip');assert.equal((await request('/api/designs/'+saved.data.id,{},b)).status,404);
 const payload={requestId:crypto.randomUUID(),kind:'custom',design,designId:saved.data.id,productId:'tshirt',contact:{name:'TEST ONLY',company:'Local verification',email:'test@example.com',phone:'+38349000000',message:'AUTOMATED LOCAL TEST',consent:true},previewIds:[fileId],printIds:[fileId],artworkIds:[fileId]};
@@ -21,4 +22,4 @@ const bad=new FormData();bad.append('file',new File(['<script>bad</script>'],'fa
 const csrf=await request('/api/designs',{...j({design}),headers:{'Content-Type':'application/json',Origin:'https://not-this-site.example'}});assert.notEqual(csrf.status,201,'cross-origin mutation blocked');
 assert.equal((await request('/api/production')).status,503,'ERP endpoint fails closed before configuration');
 const all=await request('/api/orders');assert.equal(all.data.orders.length,1,'retry created exactly one order');
-console.log(JSON.stringify({passed:14,order:first.data.reference,scope:'isolated local test session; no external ERP request'},null,2));
+console.log(JSON.stringify({passed:15,order:first.data.reference,scope:'isolated local test session; no external ERP request'},null,2));

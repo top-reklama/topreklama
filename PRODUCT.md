@@ -8,3 +8,5 @@ The client's repeated corrections define the direction: professional, pristine, 
 Home, catalog, studio, projects, service pages, about, contact and saved designs form one experience. Personalization and quote requests already have a working private persistence system. Preserve it. The actual external ERP remains unspecified and unconnected; do not imply automatic manufacturing or online payment.
 
 Administration: owner-authenticated order inbox, status and private notes, attached artwork downloads; project photo uploads, drafts and publishing to the public gallery. Never expose customer files as portfolio photos.
+
+Latest approved constraints: no products in the hero; type-led service introduction, distinct flat buttons, original client logos moving continuously, count-up company facts. Completed projects: exactly 1,200, confirmed by the user. Founded 2006; seven cities. Mugs are not offered and must not appear in current catalogue, studio choices or marketing images. Preserve historical customer records.

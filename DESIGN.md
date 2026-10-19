@@ -1,13 +1,7 @@
-# Top Reklama / Atelier
+# Top Reklama
 
-Physical scene: a business owner views a finely manufactured illuminated sign in a dim showroom, then inspects physical products against a bright studio surface. Dark hero makes the material and light legible; near-white reading surfaces support project appraisal and product editing.
+The latest direction uses a near-white, type-led hero with direct service copy. No products, cards or live 3D in the hero. Keep the original logo, magenta, charcoal, paper and grey; locally hosted Manrope throughout. Public action buttons have straight edges with a small clipped corner, no pill shapes, glow or decorative arrows. Header quote action is underlined text. Footer stays near-white.
 
-Voice: precise, tactile, assured. Original magenta + softly tinted charcoal, paper and grey. One family, locally hosted Manrope. Brand typography uses medium weights and tight optical spacing; product UI uses 10–14px captions and controls with explicit labels. Large display type is reserved for page titles. CTA labels have no decorative arrows.
+Continuous motion: a dark service-text conveyor (55s) and two opposing client-logo lanes (190s / 185s), using the original website’s 91 logo assets. Pause controls stop both systems; hover/focus pauses logos. Reduced motion stops loops and offers a scrollable static logo list. Counters run once on viewport entry for 1800ms with ease-out, ending at 2006, 1,200, current year minus 2006, and 7. Reduced motion shows final figures immediately.
 
-Actual WebGL SVG extrusion preserves the supplied TR silhouette, including counters. Acrylic face and metal body separate on request, with controlled emission and physical lighting. No continuous orbit, float or particles. Pointer motion is damped, entrance settles, GPU rendering sleeps when idle or offscreen. Reduced motion renders a static view and changes controls immediately. SVG perspective fallback handles unavailable WebGL.
-
-Motion: route entrance 650ms; viewport reveals 850ms, at most 130ms stagger; product selection 650ms; product tilt 900ms. All use exponential ease-out, no bounce. Reduced-motion preferences disable CSS transitions and animation.
-
-Layout: full-width charcoal hero, ruled service index, asymmetric image-led project composition, large product specimen beside process guidance. Footer remains near-white. Functional catalog cards use product photographs, no decorative icon-card grid. Desktop and mobile are independently reviewed.
-
-Current revision supersedes the 3D hero: a static photographic product composition, clear service names, near-white background. No live 3D or animation controls in the hero. Admin uses a restrained sidebar/inbox/detail pattern with readable 12–14px body, owner-only API authorization and no marketing footer.
+Remaining sections are image-led: service index, real projects, personalization and vehicle graphics. Existing native document navigation and restrained transitions are preserved. Admin remains an owner-only order inbox and project photo manager.
