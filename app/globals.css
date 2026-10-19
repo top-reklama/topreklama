@@ -37,3 +37,9 @@ html{scroll-padding-top:105px}body{background:var(--paper)}h1,h2,h3{font-weight:
 @media(max-width:700px){.product-editor{width:calc(100% - 10px);max-width:none;margin:4px auto 0}}
 .filters>button{border:0;border-bottom:1px solid transparent}.filters>button.selected,.filters>button:hover{border:0;border-bottom:1px solid var(--ink)}
 @media(max-width:700px){.scene-controls button{min-height:44px}.scene-controls{bottom:12px}}
+/* Browsers that support native document transitions animate link navigation. */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:document-out .18s ease-out both}
+::view-transition-new(root){animation:page-in .5s var(--ease) both}
+@keyframes document-out{to{opacity:0}}
+@media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none!important}}
