@@ -43,3 +43,5 @@ html{scroll-padding-top:105px}body{background:var(--paper)}h1,h2,h3{font-weight:
 ::view-transition-new(root){animation:page-in .5s var(--ease) both}
 @keyframes document-out{to{opacity:0}}
 @media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none!important}}
+.catalog-tools .filters{flex:1}.catalog-tools input[type=search]{flex:0 0 230px;width:230px;max-width:230px;margin-top:0}
+@media(max-width:700px){.catalog-tools input[type=search]{width:100%;max-width:none;flex:auto;margin-top:18px}}
