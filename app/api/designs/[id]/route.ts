@@ -1,0 +1,2 @@
+import {context,bindings,json,fail} from '@/lib/server';
+export async function GET(req:Request,{params}:{params:Promise<{id:string}>}){const ctx=context(req);try{const {id}=await params;const{DB}=bindings();const row=await DB.prepare('SELECT id,data FROM designs WHERE id=? AND owner_id=?').bind(id,ctx.ownerId).first<{id:string;data:string}>();return row?json({id:row.id,design:JSON.parse(row.data)},200,ctx.cookie):json({error:'Dizajni nuk u gjet.'},404,ctx.cookie)}catch(e){return fail(e,ctx.cookie)}}

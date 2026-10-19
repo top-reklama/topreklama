@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';import {readFile}from'node:fs/promises';
+const base=process.env.TEST_BASE_URL||'http://127.0.0.1:5190';
+const a=`tr_session=${crypto.randomUUID()}`,b=`tr_session=${crypto.randomUUID()}`;
+async function request(path,init={},owner=a){const response=await fetch(base+path,{...init,headers:{Cookie:owner,Origin:base,...init.headers}});const raw=await response.text();let data;try{data=JSON.parse(raw)}catch{data={error:raw}}return{status:response.status,data}}
+const j=data=>({method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+const bytes=await readFile('public/assets/logo.png');const form=new FormData();form.append('file',new File([bytes],'test-logo.png',{type:'image/png'}));
+const uploaded=await request('/api/uploads',{method:'POST',body:form});assert.equal(uploaded.status,201,JSON.stringify(uploaded));const fileId=uploaded.data.id;
+assert.equal((await request('/api/uploads/'+fileId,{},b)).status,404,'another session cannot read artwork');
+const artwork=await fetch(base+'/api/uploads/'+fileId,{headers:{Cookie:a}});assert.equal(artwork.status,200);assert.deepEqual(new Uint8Array(await artwork.arrayBuffer()),new Uint8Array(bytes),'original file preserved byte-for-byte');
+const design={version:1,productId:'tshirt',name:'API verification',color:'white',size:'M',quantity:2,sides:{front:[{id:'image-test',type:'image',x:.5,y:.4,width:.5,rotation:0,uploadId:fileId,aspect:1}],back:[]},printMethod:'DTF',notes:''};
+assert.equal((await request('/api/designs',j({design}),b)).status,400,'foreign upload rejected');
+assert.equal((await request('/api/designs',j({design:{...design,quantity:0}}))).status,400,'invalid quantity rejected');
+const saved=await request('/api/designs',j({design}));assert.equal(saved.status,201,JSON.stringify(saved));
+const reopened=await request('/api/designs/'+saved.data.id);assert.deepEqual(reopened.data.design,design,'saved design round-trip');assert.equal((await request('/api/designs/'+saved.data.id,{},b)).status,404);
+const payload={requestId:crypto.randomUUID(),kind:'custom',design,designId:saved.data.id,productId:'tshirt',contact:{name:'TEST ONLY',company:'Local verification',email:'test@example.com',phone:'+38349000000',message:'AUTOMATED LOCAL TEST',consent:true},previewIds:[fileId],printIds:[fileId],artworkIds:[fileId]};
+const first=await request('/api/orders',j(payload));assert.equal(first.status,201,JSON.stringify(first));const repeat=await request('/api/orders',j(payload));assert.equal(repeat.data.id,first.data.id,'idempotent duplicate does not create another order');
+assert.equal((await request('/api/orders/'+first.data.id,{},b)).status,404,'orders stay private');
+assert.equal((await request('/api/orders',j({...payload,requestId:crypto.randomUUID(),contact:{...payload.contact,consent:false}}))).status,400,'consent required');
+assert.equal((await request('/api/orders',j({...payload,requestId:crypto.randomUUID(),previewIds:[],printIds:[]}))).status,400,'custom orders require production files');
+const bad=new FormData();bad.append('file',new File(['<script>bad</script>'],'fake.png',{type:'image/png'}));assert.equal((await request('/api/uploads',{method:'POST',body:bad})).status,415,'MIME spoof blocked');
+const csrf=await request('/api/designs',{...j({design}),headers:{'Content-Type':'application/json',Origin:'https://not-this-site.example'}});assert.notEqual(csrf.status,201,'cross-origin mutation blocked');
+assert.equal((await request('/api/production')).status,503,'ERP endpoint fails closed before configuration');
+const all=await request('/api/orders');assert.equal(all.data.orders.length,1,'retry created exactly one order');
+console.log(JSON.stringify({passed:14,order:first.data.reference,scope:'isolated local test session; no external ERP request'},null,2));

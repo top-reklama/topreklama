@@ -1,0 +1,1 @@
+import{Suspense}from'react';import Customizer from'@/components/customizer';export default function Page(){return <Suspense fallback={<div className="container section">Duke hapur studion…</div>}><Customizer/></Suspense>}

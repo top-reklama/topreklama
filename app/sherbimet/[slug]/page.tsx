@@ -1,0 +1,1 @@
+import ServiceDetail from'@/components/service-detail';import{notFound}from'next/navigation';export default async function Page({params}:{params:Promise<{slug:string}>}){const{slug}=await params;if(!['ndricuese','3d','autografike','shtyp','promocionale'].includes(slug))notFound();return <ServiceDetail slug={slug}/>}
