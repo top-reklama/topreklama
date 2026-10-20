@@ -23,3 +23,6 @@ Latest photo/footer correction: primary Interex imagery uses the existing approv
 Latest hero replacement, informed by a visual review of Neon Decor, Engraphix and COLLINS: remove the separate headline/introduction and inset gallery with its caption strip. Use one edge-to-edge photograph, direct service heading and compact client caption over the lower image, with integrated arrow/project navigation. Daylight Interex leads. Keep the other page sections and latest light-grey footer.
 
 Phone compatibility: constrain horizontal document overflow without disabling user zoom or local editor panning. Use explicit device-width/safe-area viewport, 16px mobile form fields, 44px touch controls, wrapping menus and captions, and narrow-screen form stacking. Tested public routes and each editor at compact and large phone widths plus landscape. Preserve the full-width hero, working requests, and studio layer interactions.
+
+## About page — October 2026
+The About page now uses a split introduction with Top Reklama signage, concise company provenance, a three-step production process and two selected project photographs. Keep it factual and bilingual; avoid generic mission/strategy blocks and the old raw Heimerer image. Stack all sections on phones. Portfolio images fill their frames and have no processed-image labels or gray side margins.
