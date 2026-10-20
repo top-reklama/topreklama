@@ -152,3 +152,6 @@ button,input,select,textarea{max-inline-size:100%}
 @media(max-height:500px) and (orientation:landscape){.project-stage{height:450px;min-height:0}.mobile-nav{max-height:calc(100dvh - 74px)}.project-stage-layout{padding-bottom:34px}}
 @media(max-width:700px){.header .brand{flex-shrink:1;min-width:95px}.header-actions{flex-shrink:0}.header .lang-switch{flex-shrink:0}}
 @media(max-width:700px){.footer .footer-grid a{min-height:44px;display:flex;align-items:center;font-size:12px;margin-bottom:0}.footer .footer-grid p:not(.footer-brand>p){font-size:12px}.footer .footer-grid h3{font-size:12px}.footer .footer-email{font-size:14px!important}.contact-form label,.order-checkout label{font-size:12px}.page-intro>p,.service-overview-copy p,.studio-heading>div>p:last-child{font-size:14px;line-height:1.8}.project-stage-link{font-size:12px}}
+
+/* Photo sets remain within the page on narrow screens. */
+.project-photo-count{display:block;font-size:10px;font-weight:400;color:var(--muted);margin-bottom:5px}.project-thumbnails{flex-wrap:wrap;overflow-x:visible}.project-caption>span:has(.project-photo-count){display:block}
