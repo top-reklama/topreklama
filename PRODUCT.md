@@ -14,3 +14,5 @@ Latest approved constraints: no products in the hero; type-led service introduct
 Latest browser annotations supersede the previous type-led hero: use the original logo as the main hero visual; remove metadata and secondary hero link. No visible pause buttons. All service ticker labels and client logos navigate to relevant pages. Product colours are configurable previews, with material availability confirmed by quote. Text editing and image sizing must be clear at every breakpoint.
 
 Latest correction: do not display or maintain a project-total statistic. Only founding year, automatically calculated experience and seven cities remain. The oversized-wordmark hero was rejected and replaced with a service-led composition using the brand symbol.
+
+Services navigation must open /sherbimet, not an anchor on Home. Keep Home shorter by moving the services overview there. The pen editor needs a generous zoomable design workspace and independent per-layer removal. Instagram browser access was explicitly approved. Four public source photographs were downloaded and professionally enhanced for three additional portfolio projects; retain originals and source links.
