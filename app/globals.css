@@ -167,3 +167,10 @@ button,input,select,textarea{max-inline-size:100%}
 .about-opening-photo{min-height:0;aspect-ratio:1.5;align-self:center}.about-opening-photo img{object-position:center}
 @media(max-width:1000px) and (min-width:701px){.about-opening{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.about-opening-photo{aspect-ratio:1.25}}
 @media(max-width:700px){.about-opening-photo{aspect-ratio:1.5}}
+
+/* Isolated Top Reklama billboard specimen for the Services index. */
+.service-overview-image.billboard-preview{position:relative;aspect-ratio:1.5;background:transparent}
+.service-overview-image.billboard-preview>img:first-child{object-fit:contain}
+.service-overview-image.billboard-preview>.billboard-preview-logo{position:absolute;top:32%;left:50%;width:51%;height:auto;transform:translate(-50%,-50%);object-fit:contain}
+.service-overview-image.billboard-preview:hover>img:first-child{transform:none}
+.service-overview-image.billboard-preview:hover>.billboard-preview-logo{transform:translate(-50%,-50%)}
