@@ -171,6 +171,6 @@ button,input,select,textarea{max-inline-size:100%}
 /* Isolated Top Reklama billboard specimen for the Services index. */
 .service-overview-image.billboard-preview{position:relative;aspect-ratio:1.5;background:transparent}
 .service-overview-image.billboard-preview>img:first-child{object-fit:contain}
-.service-overview-image.billboard-preview>.billboard-preview-logo{position:absolute;top:32%;left:50%;width:51%;height:auto;transform:translate(-50%,-50%);object-fit:contain}
+.service-overview-image.billboard-preview>.billboard-preview-logo{position:absolute;top:25.5%;left:50%;width:54%;height:auto;transform:translate(-50%,-50%) rotate(5deg);object-fit:contain;filter:brightness(0) invert(1) drop-shadow(0 3px 2px rgba(20,0,20,.2))}
 .service-overview-image.billboard-preview:hover>img:first-child{transform:none}
-.service-overview-image.billboard-preview:hover>.billboard-preview-logo{transform:translate(-50%,-50%)}
+.service-overview-image.billboard-preview:hover>.billboard-preview-logo{transform:translate(-50%,-50%) rotate(5deg)}

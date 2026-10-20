@@ -28,4 +28,4 @@ Phone compatibility: constrain horizontal document overflow without disabling us
 The About page now uses a split introduction with Top Reklama signage, concise company provenance, a three-step production process and two selected project photographs. Keep it factual and bilingual; avoid generic mission/strategy blocks and the old raw Heimerer image. Stack all sections on phones. Portfolio images fill their frames and have no processed-image labels or gray side margins.
 
 ## Billboard service — October 2026
-The Services overview shows a standalone billboard cutout on a transparent background with the exact Top Reklama logo on its face. The image link opens the billboard client-work section. Keep the Birra Peja and Sola photographs as examples on that destination page.
+The Services overview shows a realistic raised roadside billboard cutout on a transparent background, with a vivid magenta-to-charcoal printed face and the exact Top Reklama logo overlaid on it. The image link opens the billboard client-work section. Keep the Birra Peja and Sola photographs as examples on that destination page.
