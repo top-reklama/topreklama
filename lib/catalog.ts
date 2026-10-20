@@ -9,13 +9,14 @@ export const products = [
 ] as const;
 export function getProduct(id:string){return products.find(p=>p.id===id)}
 export const categories=['Të gjitha','Tekstil','Promocionale','Shtyp digjital','Autografikë','Reklama'];
-export const services=[['01','Reklama ndriçuese','Shkronja me LED, kuti ndriçuese dhe zgjidhje për fasada.','sign-night.jpg'],['02','Reklama 3D','Shkronja, logo dhe forma me dimension.','heimerer.jpg'],['03','Autografikë','Mbështjellje të plota ose pjesore për automjete dhe flota.','van-top.png'],['04','Shtyp digjital','Formate të mëdha, folje dhe materiale për çdo sipërfaqe.','floor-professional.webp'],['05','Tekstil & promocionale','Bluza, kapela, stilolapsa dhe produkte me dizajnin tuaj.','shirt-front.png']];
+export const services=[['01','Reklama ndriçuese','Shkronja me LED, kuti ndriçuese dhe zgjidhje për fasada.','sign-night.jpg'],['02','Reklama 3D','Shkronja, logo dhe forma me dimension.','heimerer.jpg'],['03','Autografikë','Mbështjellje të plota ose pjesore për automjete dhe flota.','van-top.png'],['04','Shtyp digjital','Formate të mëdha, folje dhe materiale për çdo sipërfaqe.','floor-professional.webp'],['05','Tekstil & promocionale','Bluza, kapela, stilolapsa dhe produkte me dizajnin tuaj.','shirt-front.png'],['06','Billborde','Reklama në format të madh për një prani të dukshme në hapësira publike.','instagram/portfolio-2026/peja-billboards-01-professional.webp']];
 export const cities=['Prishtinë','Pejë','Prizren','Mitrovicë','Gjilan','Gjakovë','Ferizaj'];
 
-export const categoryEnglish:Record<string,string>={"Të gjitha":"All products",Tekstil:"Apparel",Promocionale:"Promotional", "Shtyp digjital":"Digital printing",Autografikë:"Vehicle graphics",Reklama:"Signage", "Reklama 3D":"3D signage", "Reklama ndriçuese":"Illuminated signage",Display:"Display"};
+export const categoryEnglish:Record<string,string>={"Të gjitha":"All products",Tekstil:"Apparel",Promocionale:"Promotional", "Shtyp digjital":"Digital printing",Autografikë:"Vehicle graphics",Reklama:"Signage", "Reklama 3D":"3D signage", "Reklama ndriçuese":"Illuminated signage",Billborde:"Billboards",Display:"Display"};
 export const serviceEnglish:Record<string,[string,string]>={
  '01':['Illuminated signage','LED letters, light boxes and solutions for facades.'],
  '02':['3D signage','Dimensional letters, logos and forms.'],
  '03':['Vehicle graphics','Full or partial wraps for vehicles and fleets.'],
  '04':['Digital printing','Large formats, films and graphics for every surface.'],
- '05':['Apparel & promotional','T-shirts, caps, pens and products with your design.']};
+ '05':['Apparel & promotional','T-shirts, caps, pens and products with your design.'],
+ '06':['Billboards','Large-format advertising for a visible presence in public spaces.']};
