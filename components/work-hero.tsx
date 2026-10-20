@@ -3,7 +3,7 @@ import{useState,useRef}from'react';
 import Link from'./site-link';
 import{useLanguage}from'./site-shell';
 const work=[
- {id:'kfc',name:'KFC',category:['Reklama 3D & ndriçuese','3D & illuminated signage'],image:'kfc-professional.png',position:'50% 48%'},
+ {id:'kfc',name:'KFC',category:['Reklama 3D & ndriçuese','3D & illuminated signage'],image:'kfc-professional.png',position:'50% 35%'},
  {id:'interex',name:'Interex',category:['Reklama ndriçuese','Illuminated signage'],image:'instagram/interex-night-professional.png',position:'50% 60%'},
  {id:'sola-bus',name:'Sola',category:['Autografikë','Vehicle graphics'],image:'instagram/sola-professional-v2.png',position:'50% 55%'}
 ];
