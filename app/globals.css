@@ -155,3 +155,6 @@ button,input,select,textarea{max-inline-size:100%}
 
 /* Photo sets remain within the page on narrow screens. */
 .project-photo-count{display:block;font-size:10px;font-weight:400;color:var(--muted);margin-bottom:5px}.project-thumbnails{flex-wrap:wrap;overflow-x:visible}.project-caption>span:has(.project-photo-count){display:block}
+
+/* Portfolio photos fill the frame without side margins. */
+.project-photo.isolated>img,.project-detail-photo.isolated>img,.work-image.isolated>img{object-fit:cover;filter:none}
