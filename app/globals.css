@@ -119,3 +119,36 @@ html{scroll-padding-top:105px}body{background:var(--paper)}h1,h2,h3{font-weight:
 @media(max-width:1000px){.project-stage{height:clamp(470px,calc(100svh - 92px),650px)}.project-stage-layout{padding-bottom:44px}.project-stage-copy h1{font-size:53px}.project-stage-disclosure{right:5%;bottom:12px}.project-stage-navigation{width:160px;gap:12px}.project-stage-arrows button{width:48px;height:48px}}
 @media(max-width:700px){.project-stage{height:clamp(370px,calc(100vw + 50px),490px);min-height:0}.project-stage-layout{padding-top:25px;padding-bottom:39px;gap:15px;align-items:flex-end}.project-stage-frame[data-project=interex] img{object-fit:cover;object-position:0% 50%!important}.project-stage-shade{background:linear-gradient(180deg,transparent 25%,rgb(20 18 20 / .05) 38%,rgb(20 18 20 / .8) 75%,rgb(20 18 20 / .96) 100%)}.project-stage-copy{min-width:0}.project-stage-client{font-size:11px;margin-bottom:13px}.project-stage-client>span{display:none}.project-stage-copy h1{font-size:35px;line-height:1.13;letter-spacing:-1.3px}.project-stage-link{font-size:10px;gap:13px;margin-top:18px}.project-stage-link svg{width:19px}.project-stage-navigation{flex:0 0 94px;width:94px;gap:8px;margin-bottom:3px}.project-stage-position{font-size:9px;margin-bottom:2px;justify-content:center;width:100%}.project-stage-arrows{gap:6px}.project-stage-arrows button{height:44px;width:44px}.project-stage-pages{gap:5px}.project-stage-pages button{width:28px;height:26px}.project-stage-disclosure{right:23px;bottom:12px;font-size:6px}}
 @media(prefers-reduced-motion:reduce){.project-stage-frame,.project-stage-frame img,.project-stage-arrows button,.project-stage-pages button>span{transition:none}.project-stage-frame img{transform:none}.project-stage-copy{animation:none}}
+
+/* Phone layout containment, safe areas and native input usability. */
+html,body{max-inline-size:100%;overflow-x:clip;overscroll-behavior-x:none}
+@supports not (overflow:clip){html,body{overflow-x:hidden}}
+main,.page-transition,.container,form,label{min-inline-size:0}
+button,input,select,textarea{max-inline-size:100%}
+.field-pair{grid-template-columns:repeat(2,minmax(0,1fr))}
+:where(h1,h2,h3,p,.button,.project-caption,.work-caption,.footer-grid){overflow-wrap:anywhere}
+@media(max-width:900px){
+ .container{padding-left:max(clamp(24px,5vw,88px),env(safe-area-inset-left));padding-right:max(clamp(24px,5vw,88px),env(safe-area-inset-right))}
+ .mobile-nav{max-height:calc(100vh - 74px);max-height:calc(100dvh - 74px - env(safe-area-inset-bottom));overflow-y:auto;overscroll-behavior:contain;padding-bottom:max(24px,env(safe-area-inset-bottom))}
+}
+@media(max-width:700px){
+ html{scroll-padding-top:88px}
+ .container{padding-left:max(23px,env(safe-area-inset-left));padding-right:max(23px,env(safe-area-inset-right))}
+ .header-inner{gap:12px}.header .brand{width:clamp(120px,42vw,175px)}.header-actions{gap:8px;margin-left:auto;min-width:0}.lang-switch{gap:0}.lang-switch button{font-size:10px;min-width:28px;min-height:44px;padding:10px 3px}.lang-switch>span{padding:0 2px}.menu-button{width:44px;min-width:44px;min-height:44px;padding:10px;gap:5px}.menu-button i{width:24px}.mobile-nav>a{min-height:44px;display:flex;align-items:center;white-space:normal}
+ .contact-form .field-pair,.order-checkout .field-pair{grid-template-columns:minmax(0,1fr)}
+ body input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]),body select,body textarea,.studio-tools input:not([type=file]):not([type=color]):not([type=range]),.studio-tools select,.studio-tools .inline-text-editor textarea,.studio-tools .inline-text-editor input[type=text],.studio-properties input:not([type=range]):not([type=color]),.workspace-quick-edit input:not([type=range]){font-size:16px!important;min-width:0;min-height:44px}
+ input[type=file]{width:100%;font-size:12px!important;overflow:hidden}textarea{width:100%}
+ .field-pair>*,.custom-fabric-color>span>*,.workspace-quick-edit>*{min-width:0}
+ .studio-layout{gap:18px}.studio-layout>*,.studio-tools,.studio-properties{width:100%;max-width:100%}.workspace-toolbar{flex-wrap:wrap}.workspace-toolbar .segmented{flex-wrap:wrap}.workspace-quick-edit{grid-template-columns:minmax(0,1fr) minmax(80px,.6fr)}
+ .studio-tools .color-swatch{width:36px;height:36px}.studio-tools .custom-fabric-color input[type=color]{height:44px;width:44px}.custom-fabric-color>span{grid-template-columns:44px minmax(0,1fr)}
+ .layers .layer-row .layer-delete{min-width:44px}.studio-page .pen-zoom-controls button{width:44px;min-height:44px}.pen-zoom-controls{flex-wrap:wrap}.editor-pens.pen-artwork-view{max-width:100%;overscroll-behavior-x:contain}
+ .segmented button,.tool-button,.filters>button{min-height:44px}.studio-properties .button,.contact-form .button{min-height:48px}.project-stage-pages button{min-height:44px}.project-stage-navigation{gap:4px}.project-stage-copy h1{font-size:clamp(28px,8.7vw,35px)}
+ .footer{padding-bottom:env(safe-area-inset-bottom)}.footer-bottom{flex-wrap:wrap}.footer-grid>*{min-width:0}.footer-email{overflow-wrap:anywhere}
+}
+@media(max-width:360px){
+ .container{padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right))}.header-inner{gap:8px}.header .brand{width:clamp(120px,41vw,145px)}
+ .section-heading{flex-wrap:wrap;gap:20px}.section-heading>p{max-width:100%}.project-caption{flex-wrap:wrap;gap:12px}.project-caption>span{min-height:32px;display:flex;align-items:center}.footer-topline{flex-wrap:wrap;gap:18px}.footer-topline>span{text-align:left}.project-stage-layout{gap:10px}.workspace-quick-edit{grid-template-columns:minmax(0,1fr);gap:16px}.studio-tools .field-pair,.studio-properties .field-pair{grid-template-columns:minmax(0,1fr)}.client-directory{gap:10px}.client-directory a{padding-inline:10px}
+}
+@media(max-height:500px) and (orientation:landscape){.project-stage{height:450px;min-height:0}.mobile-nav{max-height:calc(100dvh - 74px)}.project-stage-layout{padding-bottom:34px}}
+@media(max-width:700px){.header .brand{flex-shrink:1;min-width:95px}.header-actions{flex-shrink:0}.header .lang-switch{flex-shrink:0}}
+@media(max-width:700px){.footer .footer-grid a{min-height:44px;display:flex;align-items:center;font-size:12px;margin-bottom:0}.footer .footer-grid p:not(.footer-brand>p){font-size:12px}.footer .footer-grid h3{font-size:12px}.footer .footer-email{font-size:14px!important}.contact-form label,.order-checkout label{font-size:12px}.page-intro>p,.service-overview-copy p,.studio-heading>div>p:last-child{font-size:14px;line-height:1.8}.project-stage-link{font-size:12px}}
