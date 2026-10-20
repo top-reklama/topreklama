@@ -5,7 +5,7 @@ export const products = [
  {id:'cards',name:'Kartëvizita',en:'Business cards',category:'Shtyp digjital',image:'brand.svg',tag:'Personalizo online',desc:'Prezantimi juaj, në çdo takim.',customizable:true,print:{width:8.5,height:5.5,x:.12,y:.26,w:.76,h:.49},sizes:['85 × 55 mm'],colors:['white']},
  {id:'pens',name:'Stilolapsa promocionalë',en:'Promotional pens',category:'Promocionale',image:'pen.png',tag:'Personalizo online',desc:'Reklama juaj në duart e duhura.',customizable:true,print:{width:5,height:1,x:.3,y:.455,w:.4,h:.08},sizes:['Standard'],colors:['white']},
  {id:'vehicle',name:'Autografikë',en:'Vehicle graphics',category:'Autografikë',image:'van-top.png',tag:'Prodhim & montim',desc:'Automjeti juaj, një reklamë në lëvizje.',customizable:false,print:{width:0,height:0,x:0,y:0,w:0,h:0},sizes:[],colors:[]},
- {id:'signage',name:'Reklama 3D & ndriçuese',en:'3D & illuminated signs',category:'Reklama',image:'sign-night.jpg',tag:'Sipas projektit',desc:'Reklama që shihen ditë e natë.',customizable:false,print:{width:0,height:0,x:0,y:0,w:0,h:0},sizes:[],colors:[]},
+ {id:'signage',name:'Reklama 3D & ndriçuese',en:'3D & illuminated signs',category:'Reklama',image:'sign-night-professional.png',tag:'Sipas projektit',desc:'Reklama që shihen ditë e natë.',customizable:false,print:{width:0,height:0,x:0,y:0,w:0,h:0},sizes:[],colors:[]},
 ] as const;
 export function getProduct(id:string){return products.find(p=>p.id===id)}
 export const categories=['Të gjitha','Tekstil','Promocionale','Shtyp digjital','Autografikë','Reklama'];

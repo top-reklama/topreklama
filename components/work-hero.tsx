@@ -4,7 +4,7 @@ import Link from'./site-link';
 import{useLanguage}from'./site-shell';
 const work=[
  {id:'kfc',name:'KFC',category:['Reklama 3D & ndriçuese','3D & illuminated signage'],image:'kfc-professional.png',position:'50% 35%'},
- {id:'interex',name:'Interex',category:['Reklama ndriçuese','Illuminated signage'],image:'instagram/interex-night-professional.png',position:'50% 60%'},
+ {id:'interex',name:'Interex',category:['Reklama ndriçuese','Illuminated signage'],image:'instagram/interex-day-professional.png',position:'50% 52%'},
  {id:'sola-bus',name:'Sola',category:['Autografikë','Vehicle graphics'],image:'instagram/sola-professional-v2.png',position:'50% 55%'}
 ];
 function Arrow({back=false}:{back?:boolean}){return <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d={back?'M20 12H4m6-6-6 6 6 6':'M4 12h16m-6-6 6 6-6 6'} stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>}
