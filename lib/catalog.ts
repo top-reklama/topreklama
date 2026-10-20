@@ -1,6 +1,6 @@
 export type ProductId = 'tshirt' | 'cap' | 'cards' | 'pens' | 'vehicle' | 'signage';
 export const products = [
- {id:'tshirt',name:'Bluza të personalizuara',en:'Custom T-shirts',category:'Tekstil',image:'shirt-front.png',tag:'Personalizo online',desc:'Për ekipin, eventin ose idenë tuaj.',customizable:true,print:{width:30,height:35,x:.3,y:.29,w:.4,h:.46},sizes:['S','M','L','XL','XXL'],colors:['white','black','magenta']},
+ {id:'tshirt',name:'Bluza të personalizuara',en:'Custom T-shirts',category:'Tekstil',image:'shirt-front.png',tag:'Personalizo online',desc:'Për ekipin, eventin ose idenë tuaj.',customizable:true,print:{width:40,height:48,x:.245,y:.20,w:.51,h:.612},sizes:['S','M','L','XL','XXL'],colors:['white','black','magenta']},
  {id:'cap',name:'Kapela me logon tuaj',en:'Custom caps',category:'Tekstil',image:'cap.png',tag:'Personalizo online',desc:'Një detaj i vogël. Një prani e dallueshme.',customizable:true,print:{width:10,height:5,x:.28,y:.33,w:.42,h:.21},sizes:['Universale'],colors:['white']},
  {id:'cards',name:'Kartëvizita',en:'Business cards',category:'Shtyp digjital',image:'brand.svg',tag:'Personalizo online',desc:'Prezantimi juaj, në çdo takim.',customizable:true,print:{width:8.5,height:5.5,x:.12,y:.26,w:.76,h:.49},sizes:['85 × 55 mm'],colors:['white']},
  {id:'pens',name:'Stilolapsa promocionalë',en:'Promotional pens',category:'Promocionale',image:'pen.png',tag:'Personalizo online',desc:'Reklama juaj në duart e duhura.',customizable:true,print:{width:5,height:1,x:.3,y:.455,w:.4,h:.08},sizes:['Standard'],colors:['white']},

@@ -11,6 +11,11 @@ const design={version:1,productId:'tshirt',name:'API verification',color:'white'
 assert.equal((await request('/api/designs',j({design}),b)).status,400,'foreign upload rejected');
 assert.equal((await request('/api/designs',j({design:{...design,quantity:0}}))).status,400,'invalid quantity rejected');
 assert.equal((await request('/api/designs',j({design:{...design,productId:'mug'}}))).status,400,'removed product cannot be ordered');
+const expanded={...design,color:'#27896F',sides:{front:Array.from({length:50},(_,i)=>({id:'name-'+i,type:'text',x:.5,y:.5,width:.1,rotation:0,text:'Name '+i,fontSize:8,color:'#211D20'})),back:[]}};
+const expandedSaved=await request('/api/designs',j({design:expanded}));assert.equal(expandedSaved.status,201,'custom RGB colour and 50 layers accepted');
+assert.deepEqual((await request('/api/designs/'+expandedSaved.data.id)).data.design,expanded,'custom colour and many nametags survive save/reopen');
+assert.equal((await request('/api/designs',j({design:{...expanded,color:'#zzzzzz'}}))).status,400,'invalid colour rejected');
+assert.equal((await request('/api/designs',j({design:{...expanded,sides:{front:[...expanded.sides.front,{...expanded.sides.front[0],id:'extra'}],back:[]}}}))).status,400,'layer limit enforced');
 const saved=await request('/api/designs',j({design}));assert.equal(saved.status,201,JSON.stringify(saved));
 const reopened=await request('/api/designs/'+saved.data.id);assert.deepEqual(reopened.data.design,design,'saved design round-trip');assert.equal((await request('/api/designs/'+saved.data.id,{},b)).status,404);
 const payload={requestId:crypto.randomUUID(),kind:'custom',design,designId:saved.data.id,productId:'tshirt',contact:{name:'TEST ONLY',company:'Local verification',email:'test@example.com',phone:'+38349000000',message:'AUTOMATED LOCAL TEST',consent:true},previewIds:[fileId],printIds:[fileId],artworkIds:[fileId]};
@@ -22,4 +27,4 @@ const bad=new FormData();bad.append('file',new File(['<script>bad</script>'],'fa
 const csrf=await request('/api/designs',{...j({design}),headers:{'Content-Type':'application/json',Origin:'https://not-this-site.example'}});assert.notEqual(csrf.status,201,'cross-origin mutation blocked');
 assert.equal((await request('/api/production')).status,503,'ERP endpoint fails closed before configuration');
 const all=await request('/api/orders');assert.equal(all.data.orders.length,1,'retry created exactly one order');
-console.log(JSON.stringify({passed:15,order:first.data.reference,scope:'isolated local test session; no external ERP request'},null,2));
+console.log(JSON.stringify({passed:19,order:first.data.reference,scope:'isolated local test session; no external ERP request'},null,2));

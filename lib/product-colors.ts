@@ -1,0 +1,4 @@
+// Legacy names remain valid for saved orders; new designs can use any RGB colour.
+export const fabricColors=[['white','#FAF8F9','E bardhë','White'],['black','#211D20','E zezë','Black'],['magenta','#B41D6C','Magenta','Magenta'],['navy','#1D2E50','Blu e errët','Navy'],['blue','#285DB8','Blu','Blue'],['red','#BD3038','E kuqe','Red'],['green','#34694D','E gjelbër','Green'],['grey','#89898D','Gri','Grey'],['beige','#C9B896','Bezhë','Beige'],['yellow','#E9C34D','E verdhë','Yellow'],['orange','#D66B32','Portokalli','Orange'],['purple','#72538A','Vjollcë','Purple']] as const;
+export function fabricHex(value:string){return fabricColors.find(c=>c[0]===value)?.[1]||(/^#[0-9a-f]{6}$/i.test(value)?value:'#FAF8F9')}
+export function fabricMatrix(value:string){const hex=fabricHex(value);const rgb=[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16)/255);return `${rgb[0]} 0 0 0 0 0 ${rgb[1]} 0 0 0 0 0 ${rgb[2]} 0 0 0 0 0 1 0`}
