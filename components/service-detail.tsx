@@ -7,5 +7,5 @@ const serviceWork:Record<string,{id:string;name:string;image:string}[]>={
 '3d':[{id:'libraria-dukagjini',name:'Libraria Dukagjini',image:'instagram/dukagjini-professional.png'},{id:'kfc',name:'KFC',image:'kfc-professional.png'}],
 ndricuese:[{id:'interex',name:'Interex',image:'instagram/interex-night-professional.png'},{id:'led',name:'Shkronja me ndriçim',image:'sign-night-professional.png'}],
 autografike:[{id:'sola-bus',name:'Sola',image:'instagram/sola-professional-v2.png'},{id:'kubeti',name:'Kubeti',image:'kubeti-studio.png'}],
-shtyp:[{id:'floor',name:'Folje për dysheme',image:'floor.jpg'}]};
+shtyp:[{id:'floor',name:'Folje për dysheme',image:'floor-professional.webp'}]};
 function ServiceWork({slug}:{slug:string}){const{t}=useLanguage();const items=serviceWork[slug];if(!items)return null;return <section className="container service-real-work"><div className="section-heading"><h2>{t('Realizime nga puna jonë.','Selected client work.')}</h2><Link href="/projektet" className="simple-link">{t('Të gjitha projektet','All projects')}</Link></div><div className="service-work-grid">{items.map(p=><Link href={'/projektet?project='+p.id} key={p.id}><div><img src={'/assets/'+p.image} alt={p.name} loading="lazy"/></div><h3>{p.name}</h3></Link>)}</div></section>}
