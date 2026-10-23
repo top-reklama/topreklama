@@ -175,53 +175,36 @@ button,input,select,textarea{max-inline-size:100%}
 .service-overview-image.billboard-preview:hover>img:first-child{transform:none}
 .service-overview-image.billboard-preview:hover>.billboard-preview-logo{transform:translate(-50%,-50%) rotate(5deg)}
 
-/* Motion layer — October 2026. Uses the independent scale/translate properties so
-   existing hover transforms keep working. Everything is off under reduced motion. */
+/* Motion layer — October 2026. Kept deliberately quiet: photographs, the van, the hero and
+   page changes move; headings keep the standard fade. Uses the independent scale/translate
+   properties so existing hover transforms keep working. Everything is off under reduced motion. */
 @media(prefers-reduced-motion:no-preference){
- /* Photographs: a curtain wipe from the bottom while the image settles from a slight zoom. */
- .will-unveil{clip-path:inset(100% 0 0 0);transition:clip-path 1.1s var(--ease) var(--reveal-delay,0ms)}
- .will-unveil img{scale:1.14;transition:transform .6s var(--ease),scale 1.6s var(--ease) var(--reveal-delay,0ms)}
+ /* Photographs: a short curtain wipe while the image settles from a slight zoom. */
+ .will-unveil{clip-path:inset(100% 0 0 0);transition:clip-path .9s var(--ease) var(--reveal-delay,0ms)}
+ .will-unveil img{scale:1.05;transition:transform .6s var(--ease),scale 1.2s var(--ease) var(--reveal-delay,0ms)}
  .will-unveil.unveiled{clip-path:inset(0)}
  .will-unveil.unveiled img{scale:1}
 
- /* Headings rise out of a mask; the muted second line follows a beat later. */
- .will-rise{clip-path:inset(-10% -5% 100% -5%);translate:0 .45em;transition:clip-path 1s var(--ease),translate 1s var(--ease)}
- .will-rise.risen{clip-path:inset(-10% -5% -20% -5%);translate:0 0}
- .will-rise .muted-heading,.will-rise>span:last-child{display:inline-block;opacity:0;translate:0 .35em;transition:opacity .9s var(--ease) .18s,translate .9s var(--ease) .18s}
- .will-rise.risen .muted-heading,.will-rise.risen>span:last-child{opacity:1;translate:0 0}
+ /* The van eases a short way into the vehicle-graphics banner. */
+ .vehicle-banner.will-reveal>div>img{translate:-4% 0;transition:translate 1.4s var(--ease) .1s,transform 1.6s var(--ease)}
+ .vehicle-banner.will-reveal.revealed>div>img{translate:0 0}
 
- /* The van drives into the vehicle-graphics banner. */
- .vehicle-banner.will-reveal>div>img{translate:-9% 0;opacity:0;transition:translate 1.8s var(--ease) .15s,opacity 1s ease .15s,transform 1.6s var(--ease)}
- .vehicle-banner.will-reveal.revealed>div>img{translate:0 0;opacity:1}
-
- /* Hero: a slow cinematic drift on the visible photograph, paused (not reset) when it fades out. */
- .project-stage-frame img{animation:stage-drift 18s linear infinite alternate paused}
+ /* Hero: a barely-there drift on the visible photograph, paused (not reset) when it fades out. */
+ .project-stage-frame img{animation:stage-drift 24s linear infinite alternate paused}
  .project-stage-frame.is-current img{animation-play-state:running}
- @keyframes stage-drift{from{scale:1}to{scale:1.07}}
- /* Hero caption: client, then each title line, then the link. */
- .project-stage-copy{animation:none}
- .project-stage-copy>*{animation:stage-caption-in .7s var(--ease) both}
- .project-stage-client{animation-delay:.05s!important}
- .project-stage-link{animation-delay:.45s!important}
+ @keyframes stage-drift{from{scale:1}to{scale:1.035}}
+ /* Hero caption: the two title lines rise one after the other. */
  .project-stage-copy h1{animation:none}
  .stage-line{display:block;overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em}
- .stage-line>span{display:block;animation:stage-line-in .9s var(--ease) both}
- .stage-line:nth-child(2)>span{animation-delay:.12s}
- @keyframes stage-line-in{from{transform:translateY(105%)}to{transform:none}}
+ .stage-line>span{display:block;animation:stage-line-in .75s var(--ease) both}
+ .stage-line:nth-child(2)>span{animation-delay:.08s}
+ @keyframes stage-line-in{from{transform:translateY(100%)}to{transform:none}}
 
- /* Reading progress along the bottom of the sticky header. */
- @supports(animation-timeline:scroll()){
-  .header::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--brand);transform-origin:0 50%;scale:0 1;animation:read-progress linear both;animation-timeline:scroll(root);pointer-events:none}
-  @keyframes read-progress{to{scale:1 1}}
- }
-
- /* Page to page: the header stays put while the page lifts away and the next one rises in. */
+ /* Page to page: the header stays put while the content cross-fades with a small lift. */
  .header{view-transition-name:site-header}
- ::view-transition-old(root){animation:page-out .28s cubic-bezier(.4,0,1,1) both}
- ::view-transition-new(root){animation:page-rise .7s var(--ease) .06s both}
+ ::view-transition-old(root){animation:document-out .2s ease-out both}
+ ::view-transition-new(root){animation:page-in .45s var(--ease) both}
  ::view-transition-group(site-header){animation-duration:0s}
- @keyframes page-out{to{opacity:0;transform:translateY(-14px)}}
- @keyframes page-rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 }
-.project-stage[data-instant=true] .project-stage-copy>*,.project-stage[data-instant=true] .stage-line>span{animation:none}
+.project-stage[data-instant=true] .stage-line>span{animation:none}
 .stage-line{display:block}
