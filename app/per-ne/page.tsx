@@ -19,7 +19,7 @@ export default function About() {
         <Link className="button" href="/projektet">{t('Shiko punën tonë', 'Explore our work')}</Link>
         <div className="about-origin"><strong>{t('Që nga 2006', 'Since 2006')}</strong><span>{t('Pjesë e Dukagjini Group', 'Part of Dukagjini Group')}</span></div>
       </div>
-      <figure className="about-opening-photo"><img src="/assets/service-signage.png" alt={t('Logoja Top Reklama në shkronja tredimensionale ngjyrë magenta', 'Top Reklama magenta dimensional signage')} fetchPriority="high"/><figcaption>{t('Dizajni merr formë.', 'Design takes shape.')}</figcaption></figure>
+      <figure className="about-opening-photo"><img src="/assets/service-signage.webp" alt={t('Logoja Top Reklama në shkronja tredimensionale ngjyrë magenta', 'Top Reklama magenta dimensional signage')} fetchPriority="high"/><figcaption>{t('Dizajni merr formë.', 'Design takes shape.')}</figcaption></figure>
     </section>
 
     <section className="container about-approach">
