@@ -43,6 +43,17 @@ A custom order stores its complete versioned design and physical dimensions. Ori
 
 **ERP integration remains pending:** obtain the vendor/product name, API documentation, authentication method, item/variant mappings, order lifecycle and file-ingestion requirements. Set `PRODUCTION_API_TOKEN` as a runtime secret to enable read-only integration export. It is disabled until configured. The outbox retains pending orders; no external synchronization has been claimed or enabled. A vendor-specific connector should acknowledge jobs, implement retry/backoff and reconcile external IDs before automatic production is switched on.
 
+## Preview mode and launch
+
+The site starts in **preview mode**: every page tells search engines not to index it (`noindex, nofollow`) and robots.txt offers no sitemap, so a shared review link stays out of search results. Visitors see no difference.
+
+To launch, set these runtime variables in the hosting environment and redeploy:
+
+- `SITE_INDEXING=on` — allows indexing and publishes the sitemap. Any other value, or none, keeps preview mode.
+- `SITE_URL` — the public origin used for canonical links, social previews and the sitemap (defaults to `https://topreklama.net`).
+
+Saved designs (`/porosite`) and administration stay `noindex` in both modes. Locally, add the same variables to the git-ignored `.dev.vars`.
+
 ## Access and accounts
 
 The hosted review starts owner-private. Local/public-compatible guests receive an unguessable HttpOnly session cookie. Signed-in Sites visitors use their platform identity. New signed-in records are available across sessions under that identity; anonymous records remain tied to the device cookie. Existing guest designs are not automatically migrated on sign-in. Production staff access and notification delivery must be configured with the actual operating environment before a public store launch.
