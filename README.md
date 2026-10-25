@@ -31,6 +31,8 @@ npx tsc --noEmit
 node tests/api-smoke.mjs
 ```
 
+`node tests/rate-limit-smoke.mjs` drives each request ceiling (design saves, uploads, orders — per visitor, per IP and guest-wide) until it answers 429, then deletes its local test rows. Apply `drizzle/0002_nosy_deadpool.sql` to an existing local database first.
+
 The API tests require the local server. They create isolated local test sessions and do not contact an ERP or email service.
 
 ## Production handoff

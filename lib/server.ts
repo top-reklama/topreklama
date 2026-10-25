@@ -10,4 +10,13 @@ export function fail(error:unknown,cookie?:string){if(error instanceof SyntaxErr
 export function imageMime(bytes:Uint8Array){if(bytes[0]===137&&bytes[1]===80&&bytes[2]===78&&bytes[3]===71&&bytes[4]===13&&bytes[5]===10)return'image/png';if(bytes[0]===255&&bytes[1]===216&&bytes[2]===255)return'image/jpeg';if(String.fromCharCode(...bytes.slice(0,4))==='RIFF'&&String.fromCharCode(...bytes.slice(8,12))==='WEBP')return'image/webp';return null}
 // Guests can shed their cookie to reset per-owner quotas, so guest traffic also shares a site-wide ceiling.
 export const guestCaps={uploadBytesPerDay:3*1024*1024*1024,ordersPerHour:120};
+// Per-visitor and per-IP request ceilings, counted in rate_events over a sliding window.
+// Cloudflare sets cf-connecting-ip at its edge, so a client cannot choose it.
+export const rateLimits={designSave:{owner:[60,3600000],ip:[150,3600000]},upload:{owner:[40,3600000],ip:[100,3600000]},order:{ip:[30,3600000]}} as const;
+export function clientIp(req:Request){return req.headers.get('cf-connecting-ip')||'local'}
+type Window=readonly [number,number];
+export async function rateLimited(req:Request,ownerId:string,action:keyof typeof rateLimits){const{DB}=bindings();const now=Date.now();const rules=Object.entries(rateLimits[action]) as [string,Window][];try{for(const[scope,[limit,windowMs]]of rules){const key=scope==='ip'?'ip:'+clientIp(req):ownerId;const row=await DB.prepare('SELECT COUNT(*) AS n FROM rate_events WHERE bucket=? AND key=? AND created_at>?').bind(action,key,now-windowMs).first<{n:number}>();if((row?.n||0)>=limit)return true}await DB.batch(rules.map(([scope])=>DB.prepare('INSERT INTO rate_events (id,bucket,key,created_at) VALUES (?,?,?,?)').bind(crypto.randomUUID(),action,scope==='ip'?'ip:'+clientIp(req):ownerId,now)));if(Math.random()<.02)await DB.prepare('DELETE FROM rate_events WHERE created_at<?').bind(now-86400000).run();return false}catch(e){
+// A missing migration must not take orders and uploads down with it.
+if(e instanceof Error&&e.message.includes('no such table: rate_events')){console.error('Rate limiting unavailable: rate_events table missing');return false}throw e}}
+export function tooMany(cookie?:string){return json({error:'Shumë kërkesa. Provoni më vonë.'},429,cookie)}
 export async function ownedUploads(ids:string[],ownerId:string){const {DB}=bindings();for(const id of [...new Set(ids)]){const row=await DB.prepare('SELECT id FROM uploads WHERE id = ? AND owner_id = ?').bind(id,ownerId).first();if(!row)return false}return true}
