@@ -1,2 +1,2 @@
 import type{MetadataRoute}from'next';import{siteUrl}from'./site-url';
-export default function robots():MetadataRoute.Robots{return{rules:{userAgent:'*',allow:'/',disallow:['/admin','/api/','/porosite']},sitemap:siteUrl+'/sitemap.xml'}}
+export default function robots():MetadataRoute.Robots{return{rules:{userAgent:'*',allow:'/',disallow:['/admin','/api/','/porosite','/en/porosite']},sitemap:siteUrl+'/sitemap.xml'}}
