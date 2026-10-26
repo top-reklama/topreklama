@@ -175,6 +175,100 @@ button,input,select,textarea{max-inline-size:100%}
 .service-overview-image.billboard-preview:hover>img:first-child{transform:none}
 .service-overview-image.billboard-preview:hover>.billboard-preview-logo{transform:translate(-50%,-50%) rotate(5deg)}
 
+/* Products: an editorial introduction and a quiet, image-first catalogue. */
+.catalog-page .catalog-opening{background:#f0ebee}
+.catalog-opening-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:stretch;min-height:560px}
+.catalog-opening-copy{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:82px 55px 82px 0}
+.catalog-opening-copy .eyebrow{margin-bottom:33px}
+.catalog-opening-copy h1{font-size:clamp(54px,6vw,88px);font-weight:500;line-height:1.04;letter-spacing:-.068em;white-space:nowrap}
+.catalog-opening-copy h1 span{color:var(--brand)}
+.catalog-opening-copy>p{max-width:450px;font-size:15px;line-height:1.75;color:#4f494d;margin-top:30px}
+.catalog-opening-link{display:inline-flex;align-items:center;gap:20px;min-height:45px;border-bottom:1px solid var(--ink);font-size:13px;font-weight:600;margin-top:30px;transition:color .2s,border-color .2s}
+.catalog-opening-link:hover{color:var(--brand);border-color:var(--brand)}
+.catalog-opening-link span{font-size:19px;font-weight:400;line-height:1}
+/* The whole sign stays in frame; its edges fade into a background sampled from the photo's wall. */
+.catalog-opening-visual{background:linear-gradient(180deg,#2b2d32,#1d1f24);position:relative;overflow:hidden;min-height:560px}
+.catalog-opening-visual>img{position:absolute;left:0;top:50%;width:100%;height:auto;transform:translateY(-50%);-webkit-mask-image:linear-gradient(180deg,transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(180deg,transparent,#000 22%,#000 78%,transparent)}
+.catalog-opening-visual-caption{position:absolute;bottom:24px;left:25px;z-index:1;font-size:10px;font-weight:600;letter-spacing:.1em;color:#f4eef2}
+.catalog-page .catalog-section{padding-top:82px;padding-bottom:110px;scroll-margin-top:100px}
+.catalog-section-heading{display:flex;align-items:end;justify-content:space-between;gap:35px;margin-bottom:42px}
+.catalog-section-heading .eyebrow{display:block;margin-bottom:18px}
+.catalog-section-heading h2{font-size:clamp(36px,3.8vw,54px);font-weight:500;line-height:1.1;letter-spacing:-.055em}
+.catalog-section-heading>p{font-size:13px;line-height:1.7;max-width:245px;color:#544d52;padding-bottom:4px}
+.catalog-page .catalog-tools{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:15px 0;align-items:center}
+.catalog-page .filters{gap:8px 17px}
+.catalog-page .filters>button{font-size:11px;min-height:40px;padding:6px 0;border:0;border-bottom:1px solid transparent;border-radius:0;background:none;white-space:nowrap}
+.catalog-page .filters>button.selected,.catalog-page .filters>button:hover{color:var(--brand);border-color:var(--brand);background:none}
+.catalog-page .catalog-tools input[type=search]{font-size:12px;min-height:42px}
+.catalog-page .results-count{padding:24px 0;font-size:10px;letter-spacing:.04em;color:#554e52}
+.catalog-page .product-grid{gap:53px 25px}
+.catalog-page .product-card-image{aspect-ratio:1/1;background:#ebe7e9}
+.catalog-page .product-card:hover .product-card-image{background:#e4dce1}
+.catalog-page .product-card:hover .product-visual{transform:scale(1.035) rotateY(-2deg)}
+.catalog-page .product-card-caption{display:flex;align-items:baseline;justify-content:space-between;gap:15px;padding-top:16px}
+.catalog-page .product-card-caption h3{font-size:20px;font-weight:500;letter-spacing:-.035em;line-height:1.25}
+.catalog-card-category{display:block;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);margin-bottom:6px}
+.catalog-page .catalog-photo>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 50%;transition:transform .6s var(--ease)}
+.catalog-page .product-card:hover .catalog-photo>img{transform:scale(1.04)}
+.catalog-page .catalog-photo .catalog-card-index{color:#f4eef2}
+.catalog-page .product-card-action{font-size:11px;line-height:1.35;white-space:nowrap;margin:0;border-bottom:1px solid currentColor;padding-bottom:3px}
+.catalog-page .product-card:hover .product-card-action{color:var(--brand)}
+.catalog-card-index{position:absolute;left:18px;top:17px;font-size:10px;font-weight:600;letter-spacing:.08em;color:#4b4448;z-index:2}
+.catalog-page .visual-vehicle .product-base{mix-blend-mode:normal;width:94%;height:94%;left:3%;top:3%;object-fit:contain;filter:drop-shadow(0 18px 14px #33242a20)}
+.visual-signage .product-base{object-fit:contain;width:73%;height:73%;left:13.5%;top:13.5%}
+.catalog-page .visual-signage .product-base{width:80%;height:80%;left:10%;top:10%}
+.catalog-page .product-card-image:has(.visual-signage){background:#e8e0e5}
+.catalog-page .product-card:hover .product-card-image:has(.visual-signage){background:#ded3da}
+.catalog-ways{display:grid;grid-template-columns:minmax(0,1.1fr) repeat(2,minmax(0,1fr));gap:45px;border-top:1px solid var(--line);padding-block:80px 95px}
+.catalog-ways-heading h2{font-size:clamp(34px,3.4vw,48px);font-weight:500;line-height:1.1;letter-spacing:-.055em;margin-top:18px}
+.catalog-ways-heading h2 span{color:var(--muted)}
+.catalog-way{display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding-top:6px}
+.catalog-way-index{font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--brand)}
+.catalog-way h3{font-size:22px;font-weight:500;letter-spacing:-.035em}
+.catalog-way p{font-size:14px;line-height:1.75;color:#544d52;max-width:330px;flex:1}
+@media(max-width:1000px){
+ .catalog-ways{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .catalog-ways-heading{grid-column:1/-1}
+ .catalog-opening-layout{min-height:460px}
+ .catalog-opening-copy{padding:60px 28px 60px 0}
+ .catalog-opening-copy h1{font-size:clamp(45px,5.4vw,65px)}
+ .catalog-opening-visual{min-height:460px}
+ .catalog-page .product-card-caption{display:block}
+ .catalog-page .product-card-action{display:inline-block;margin-top:12px}
+}
+@media(max-width:700px){
+ .catalog-opening-layout{grid-template-columns:minmax(0,1fr);min-height:0}
+ .catalog-opening-copy{padding:50px 0 43px}
+ .catalog-opening-copy .eyebrow{margin-bottom:22px}
+ .catalog-opening-copy h1{font-size:clamp(46px,11vw,67px);white-space:normal}
+ .catalog-opening-copy>p{font-size:14px;margin-top:23px}
+ .catalog-opening-link{margin-top:20px;font-size:12px}
+ .catalog-opening-visual{min-height:0;aspect-ratio:1.3;margin:0 calc(-1 * max(23px,env(safe-area-inset-left)))}
+ .catalog-opening-visual-caption{left:22px;bottom:16px;font-size:9px}
+ .catalog-page .catalog-section{padding-top:53px;padding-bottom:65px;scroll-margin-top:80px}
+ .catalog-section-heading{display:block;margin-bottom:31px}
+ .catalog-section-heading h2{font-size:38px}
+ .catalog-section-heading>p{font-size:12px;margin-top:16px;max-width:300px}
+ .catalog-page .catalog-tools{padding:11px 0 17px}
+ .catalog-page .filters{gap:3px 20px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1 * max(23px,env(safe-area-inset-left)));padding-inline:max(23px,env(safe-area-inset-left))}
+ .catalog-page .filters::-webkit-scrollbar{display:none}
+ .catalog-page .filters>button{font-size:11px;min-height:42px}
+ .catalog-page .catalog-tools input[type=search]{margin-top:12px}
+ .catalog-page .results-count{padding:17px 0;font-size:10px}
+ .catalog-page .product-grid{gap:32px 13px}
+ .catalog-page .product-card-image{aspect-ratio:1/1.1}
+ .catalog-page .product-card-caption{padding-top:12px}
+ .catalog-page .product-card-caption h3{font-size:15px;line-height:1.35}
+ .catalog-page .product-card-action{font-size:10px;margin-top:10px}
+ .catalog-card-index{left:10px;top:10px;font-size:8px}
+ .catalog-card-category{font-size:9px;margin-bottom:4px}
+ .catalog-ways{grid-template-columns:minmax(0,1fr);gap:34px;padding-block:55px 65px}
+ .catalog-way{border-top:1px solid var(--line);padding-top:24px}
+}
+@media(max-width:390px){.catalog-opening-copy h1{font-size:44px}.catalog-page .product-card-caption h3{font-size:14px}}
+@media(max-width:340px){.catalog-page .product-grid{grid-template-columns:minmax(0,1fr)}.catalog-page .product-card-image{aspect-ratio:1.18}}
+@media(prefers-reduced-motion:reduce){.catalog-page .product-card .product-visual,.catalog-opening-link,.catalog-page .catalog-photo>img{transition:none}}
+
 /* Motion layer — October 2026. Kept deliberately quiet: photographs, the van, the hero and
    page changes move; headings keep the standard fade. Uses the independent scale/translate
    properties so existing hover transforms keep working. Everything is off under reduced motion. */
