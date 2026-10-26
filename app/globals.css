@@ -273,10 +273,12 @@ button,input,select,textarea{max-inline-size:100%}
    page changes move; headings keep the standard fade. Uses the independent scale/translate
    properties so existing hover transforms keep working. Everything is off under reduced motion. */
 @media(prefers-reduced-motion:no-preference){
- /* Photographs: a short curtain wipe while the image settles from a slight zoom. */
- .will-unveil{clip-path:inset(100% 0 0 0);transition:clip-path .9s var(--ease) var(--reveal-delay,0ms)}
- .will-unveil img{scale:1.05;transition:transform .6s var(--ease),scale 1.2s var(--ease) var(--reveal-delay,0ms)}
- .will-unveil.unveiled{clip-path:inset(0)}
+ /* Photographs: a cover panel lifts away while the image settles from a slight zoom. A panel rather
+    than clip-path keeps the frame visible to the browser, so lazy images start loading on time. */
+ .will-unveil{position:relative}
+ .will-unveil::after{content:'';position:absolute;inset:0;z-index:3;background:var(--surface);transform-origin:50% 0;transition:transform 1s var(--ease) var(--reveal-delay,0ms);pointer-events:none}
+ .will-unveil.unveiled::after{transform:scaleY(0)}
+ .will-unveil img{scale:1.05;transition:transform .6s var(--ease),scale 1.3s var(--ease) var(--reveal-delay,0ms)}
  .will-unveil.unveiled img{scale:1}
 
  /* The van eases a short way into the vehicle-graphics banner. */
@@ -312,3 +314,127 @@ button,input,select,textarea{max-inline-size:100%}
 .privacy-text ul{margin:14px 0 0;padding-left:20px;display:grid;gap:8px}
 .privacy-back{margin-top:20px}
 .checkbox-label a{text-decoration:underline;text-underline-offset:3px}
+
+/* ==========================================================================
+   Premium layer — October 2026
+   One consistent type scale, calmer chrome and refined interaction across every page.
+   Earlier rules set sizes per component and per breakpoint (many at 8–10px), so the
+   readable minimums below use !important deliberately; nothing else here does.
+   ========================================================================== */
+:root{--muted:oklch(47% .008 330);--line-soft:oklch(21% .008 330 / .09);--media-radius:4px;--label-tracking:.14em}
+
+/* Type scale: labels 11px, meta 12px, interface 13px, small body 14px. */
+.eyebrow,.catalog-card-index,.catalog-way-index,.service-overview-copy>span,.about-step-number,.work-caption>span,.project-stage-position span,.catalog-opening-visual-caption,.footer-topline span,.footer-grid h3,.heritage-locations>span,.spotlight-top span,.map-info .eyebrow{font-size:11px!important;letter-spacing:var(--label-tracking)!important;font-weight:600}
+.eyebrow{text-transform:uppercase;margin-bottom:22px}
+.work-caption p,.project-caption p,.project-caption span,.project-photo-count,.about-project-caption span,.about-opening-photo figcaption,.results-count,.catalog-card-category,.product-card-action,.client-directory span,.file-field small,.footer-bottom,.footer-bottom span,.footer-bottom a,.project-stage-client>span,.number-fact>span,.location-item small,.studio-description li>span{font-size:12px!important}
+.desktop-nav a,.account-link,.header .button.small,.footer-grid a,.filters>button,.spotlight-switch button,.contact-form label,.field-pair label,.contact-messengers a,.checkbox-label span,.simple-link,.about-origin strong,.about-origin span{font-size:13px!important}
+.numbers-heading p,.studio-description li p,.catalog-way p,.footer-brand p,.service-overview-copy p,.section-heading>p,.page-intro>p{font-size:15px!important;line-height:1.7}
+.lang-switch button{font-size:12px!important}
+
+/* Headlines: one confident scale for page openings. */
+.page-intro h1,.catalog-opening-copy h1,.about-opening-copy h1{font-size:clamp(46px,5.4vw,86px)!important;line-height:1.03;letter-spacing:-.055em;font-weight:500}
+.page-intro{padding-block:clamp(56px,8vw,110px) clamp(40px,5vw,70px)}
+.page-intro>p{max-width:520px;color:var(--muted);margin-top:26px}
+.section-heading h2,.story-layout h2,.process-section h2{letter-spacing:-.045em}
+
+/* Header: frosted, hairline, and a little slimmer once the page scrolls. */
+.header{background:color-mix(in oklch,var(--paper) 84%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-bottom-color:var(--line-soft);transition:box-shadow .35s var(--ease)}
+.header-inner{transition:height .35s var(--ease)}
+.header.is-scrolled{box-shadow:0 1px 0 var(--line-soft),0 10px 30px -18px oklch(21% .008 330 / .25)}
+.header.is-scrolled .header-inner{height:68px}
+.desktop-nav a,.desktop-nav a.active{background:none!important;transform:none!important;position:relative;color:var(--ink)}
+.desktop-nav a::after{content:'';position:absolute;left:10px;right:10px;bottom:2px;height:1px;background:var(--brand);transform:scaleX(0);transform-origin:50% 50%;transition:transform .35s var(--ease)}
+.desktop-nav a:hover::after,.desktop-nav a.active::after{transform:scaleX(1)}
+.desktop-nav a.active{color:var(--brand)}
+
+/* Text links: an underline that draws in from the left on hover. */
+.simple-link{border-bottom:0!important;padding-bottom:5px;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;transition:color .25s}
+.simple-link:hover{color:var(--brand);animation:link-sweep .75s var(--ease)}
+@keyframes link-sweep{0%{background-position:100% 100%;background-size:100% 1px}45%{background-position:100% 100%;background-size:0 1px}46%{background-position:0 100%;background-size:0 1px}100%{background-position:0 100%;background-size:100% 1px}}
+
+/* Media: one corner radius and one hover behaviour for every photograph card. */
+.work-image,.project-photo,.product-card-image,.service-overview-image,.about-project-image,.service-work-grid img,.service-cover{border-radius:var(--media-radius);overflow:hidden}
+.project-photo img,.service-overview-image:not(.billboard-preview):not(.apparel-preview)>img:first-child,.about-project-image img,.service-work-grid img{transition:transform .9s var(--ease)!important}
+.project-card:hover .project-photo img,.service-overview-image:not(.billboard-preview):not(.apparel-preview):hover>img:first-child,.about-project:hover .about-project-image img,.service-work-grid a:hover img{transform:scale(1.035)!important}
+
+/* Clients: calm monochrome logos that come to life on hover. */
+.client-directory{gap:14px}
+.client-directory a{border-color:var(--line-soft);border-radius:var(--media-radius);transition:background .3s,border-color .3s}
+.client-directory a img{filter:grayscale(1) contrast(.9);opacity:.72;transition:filter .45s var(--ease),opacity .45s var(--ease)}
+.client-directory a:hover{background:var(--surface);border-color:var(--line)}
+.client-directory a:hover img,.client-directory a:focus-visible img{filter:none;opacity:1}
+
+/* Forms: larger, quieter fields with a clear brand focus state. */
+.contact-form input:not([type=checkbox]):not([type=file]),.contact-form select,.contact-form textarea{font-size:15px;min-height:50px;border-radius:3px;border:1px solid var(--line);background:var(--paper);transition:border-color .2s,box-shadow .2s}
+.contact-form textarea{min-height:130px}
+.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{outline:0;border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in oklch,var(--brand) 16%,transparent)}
+
+/* Footer: a clear brand line, readable columns and gentle hover colour. */
+.footer-brand p{font-size:clamp(22px,2vw,28px)!important;line-height:1.25;letter-spacing:-.035em;font-weight:500;color:var(--ink)}
+.footer-grid h3{text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.footer-grid a{transition:color .2s}
+.footer-grid a:hover,.footer-bottom a:hover{color:var(--brand)}
+
+/* Smooth anchor jumps that land below the sticky header. */
+html{scroll-padding-top:96px}
+@media(max-width:700px){
+ .header.is-scrolled .header-inner{height:64px}
+ .page-intro h1,.catalog-opening-copy h1,.about-opening-copy h1{font-size:clamp(40px,11vw,56px)!important}
+ .desktop-nav a::after{display:none}
+}
+@media(prefers-reduced-motion:reduce){.header,.header-inner,.simple-link,.desktop-nav a::after,.client-directory a img{transition:none!important;animation:none!important}}
+
+/* Services: an index of hairline rows, then alternating editorial sections. */
+.services-index{display:grid;border-top:1px solid var(--line);margin-bottom:clamp(60px,8vw,110px)}
+.services-index a{display:grid;grid-template-columns:70px minmax(0,1fr) minmax(0,1.1fr);align-items:baseline;gap:30px;padding:26px 0;border-bottom:1px solid var(--line);transition:padding .45s var(--ease),background .35s var(--ease)}
+.services-index-number{font-size:11px;font-weight:600;letter-spacing:var(--label-tracking);color:var(--brand)}
+.services-index-name{font-size:clamp(24px,2.4vw,34px);font-weight:500;letter-spacing:-.04em;line-height:1.15;transition:color .3s}
+.services-index-text{font-size:15px;line-height:1.6;color:var(--muted)}
+.services-index a:hover{padding-inline:18px;background:var(--surface)}
+.services-index a:hover .services-index-name{color:var(--brand)}
+.services-page .service-overview-row{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(40px,6vw,96px);padding-block:clamp(44px,6vw,80px);border-top-color:var(--line-soft);scroll-margin-top:90px}
+.services-page .service-overview-row:nth-child(even){grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+.services-page .service-overview-row:nth-child(even) .service-overview-image{order:2}
+.services-page .service-overview-copy h2{font-size:clamp(32px,3.4vw,50px);letter-spacing:-.045em;line-height:1.08;margin-top:20px}
+.services-page .service-overview-copy p{max-width:420px;margin:22px 0 32px}
+.service-overview-actions{display:flex;align-items:center;flex-wrap:wrap;gap:16px 28px}
+.service-overview-actions .button{margin:0}
+@media(max-width:1000px){
+ .services-index a{grid-template-columns:52px minmax(0,1fr);gap:6px 18px;padding-block:20px}
+ .services-index-text{grid-column:2;font-size:14px}
+ .services-page .service-overview-row,.services-page .service-overview-row:nth-child(even){display:block}
+ .services-page .service-overview-copy{margin-top:26px}
+}
+@media(max-width:700px){
+ .services-index a:hover{padding-inline:0;background:none}
+ .services-index-name{font-size:22px}
+}
+@media(prefers-reduced-motion:reduce){.services-index a{transition:none}}
+
+/* Service pages: a split editorial opening, a cinematic cover and readable detail. */
+.service-intro{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);column-gap:clamp(40px,7vw,120px);align-items:end}
+.service-intro>.eyebrow{grid-column:1/-1}
+.service-intro h1{grid-column:1;grid-row:2/span 2;margin:0}
+.service-intro>p{grid-column:2;grid-row:2;margin:0!important;align-self:end}
+.service-intro .button-row{grid-column:2;grid-row:3;margin-top:26px!important;flex-direction:row!important;align-items:center!important}
+.service-cover{height:clamp(320px,42vw,620px)!important}
+.service-cover img{border-radius:0!important}
+.service-benefits li{font-size:14px!important;padding-top:16px}
+.process-grid p{font-size:14px!important;line-height:1.75}
+.process-grid h3{font-size:22px!important;letter-spacing:-.03em}
+.story-layout p{font-size:17px!important;line-height:1.8}
+.service-work-grid h3{font-size:19px;letter-spacing:-.025em}
+@media(max-width:900px){
+ .service-intro{display:block}
+ .service-intro>p{margin-top:22px!important}
+ .service-intro .button-row{flex-direction:column!important;align-items:stretch!important}
+ .service-cover{height:clamp(240px,62vw,380px)!important}
+ .story-layout p{font-size:15px!important}
+}
+
+/* Filters everywhere share the catalogue's quiet underline style. */
+.filters{gap:6px 22px!important}
+.filters>button{background:none!important;border:0!important;border-bottom:1px solid transparent!important;border-radius:0!important;padding:8px 0!important;color:var(--ink);transition:color .25s,border-color .25s}
+.filters>button:hover{color:var(--brand)}
+.filters>button.selected,.filters>button[aria-pressed=true]{color:var(--brand)!important;border-bottom-color:var(--brand)!important}
+@media(max-width:700px){.filters{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1 * max(22px,env(safe-area-inset-left)));padding-inline:max(22px,env(safe-area-inset-left))}.filters::-webkit-scrollbar{display:none}}
