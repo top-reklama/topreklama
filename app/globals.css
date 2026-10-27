@@ -768,3 +768,50 @@ html{scroll-padding-top:96px}
 .products-intro h1{margin-bottom:22px}
 /* The van and billboard photos sit on white; multiply lets the grey panel show through, keeping their shadows */
 .service-block#autografike .service-block-lead img,.service-block#billborde .service-block-lead img,.service-cover.branded.is-contained>img,.products-project-row:nth-child(3) .products-project-brand img,.products-project-row:nth-child(5) .products-project-brand img{mix-blend-mode:multiply}
+
+/* Phone pass: readable text and comfortable tap targets (WCAG-ish 12px+ text, ~44px taps) */
+@media(max-width:700px){
+ .button,.button.small{font-size:13px!important;min-height:46px;padding-inline:20px}
+ .header .button.small{font-size:12px!important;min-height:40px}
+ .footer-grid a,.footer-grid p,.footer-grid>div:last-child>p{font-size:13px!important;line-height:1.8}
+ .footer-grid a{display:inline-block;padding-block:4px}
+ .simple-link{display:inline-block;padding-block:9px}
+ .quote-invitation-phone{display:inline-block;padding-block:10px}
+ .contact-layout aside a{display:inline-block;padding-block:8px}
+ .studio-page .breadcrumb,.studio-page .breadcrumb a,.studio-page .step-label,.studio-page .field-label{font-size:12px!important}
+ .studio-page small,.studio-page summary{font-size:12px!important}
+ .studio-page .breadcrumb a{display:inline-block;padding-block:8px}
+ .studio-page button{font-size:13px}
+ .service-conveyor-group>a{padding-block:12px}
+}
+@media(max-width:700px){
+ .footer-topline{flex-direction:column;align-items:flex-start!important;gap:14px}
+ .footer-topline>span{text-align:left!important;white-space:normal;letter-spacing:.12em}
+ .footer-topline>span br{display:none}
+ /* Room under the footer so the floating WhatsApp button never covers its last links. */
+ .footer{padding-bottom:96px!important}
+}
+/* On phones the branded examples keep their own 3:2 shape, so no logo is cut at the sides */
+@media(max-width:900px){.products-project-brand,.service-block-lead,.service-cover.branded{aspect-ratio:3/2!important}}
+@media(max-width:700px){.service-cover.branded{width:calc(100% - 46px)}}
+@media(max-width:700px){
+ .filters button{white-space:nowrap;flex:none}
+ .project-caption{flex-direction:column;align-items:flex-start!important;gap:6px!important}
+ .project-caption>span{display:flex;gap:12px;align-items:baseline;font-size:12px!important}
+ .project-caption h3{font-size:20px!important}
+}
+/* Phones: the card sits under the map instead of covering the chosen pin */
+@media(max-width:700px){
+ .heritage-map,.places .heritage-map{min-height:0!important;display:flex;flex-direction:column;gap:12px}
+ .heritage-map .city-map{position:relative!important;inset:auto;height:340px;min-height:0}
+ .heritage-map-card{position:static;width:100%;box-shadow:none;border:1px solid var(--line)}
+ .location-map.has-real-map{min-height:0!important;display:flex;flex-direction:column;gap:12px;background:none}
+ .has-real-map .city-map{position:relative!important;inset:auto;height:340px;border-radius:var(--media-radius,8px)}
+ .has-real-map .map-info{position:static;width:100%;box-shadow:none;border:1px solid var(--line)}
+}
+@media(max-width:700px){.location-item small,.map-info p:not(.eyebrow){font-size:13px!important}.map-info .eyebrow{font-size:11px!important}}
+@media(max-width:700px){
+ .footer a{display:inline-block;padding-block:10px}
+ .studio-page label,.studio-page .workspace-note,.studio-page .local-save-note,.studio-page span{font-size:max(12px,1em)}
+ .studio-page label,.studio-page .workspace-note,.studio-page .local-save-note{font-size:12px!important}
+}
