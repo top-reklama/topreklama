@@ -42,4 +42,6 @@ export const projectCities:Record<string,string>={
   // Rugova lies within the municipality of Pejë.
   'eko-resort-malesia':'Pejë',ervini:'Istog',
   cisco:'Pejë','ip-petrol':'Komoran',iwash:'Komoran',
+  // Rruga B is in Prishtinë.
+  lochky:'Prishtinë',
 };
