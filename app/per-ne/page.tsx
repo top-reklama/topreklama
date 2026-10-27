@@ -2,6 +2,7 @@
 
 import Link from '@/components/site-link';
 import {useLanguage, ContactBand} from '@/components/site-shell';
+import {PlacesMap} from '@/components/places-map';
 
 export default function About() {
   const {t} = useLanguage();
@@ -34,7 +35,7 @@ export default function About() {
         <Link href="/projektet?project=pakketo" className="about-project"><div className="about-project-image"><img src="/assets/instagram/portfolio-2026/pakketo-01-professional.webp" alt={t('Fasada e Pakketo me reklamë dhe grafikë në xham', 'Pakketo façade with signage and window graphics')} loading="lazy"/></div><div className="about-project-caption"><h3>Pakketo</h3><span>{t('Identitet në fasadë', 'Façade branding')}</span></div></Link>
       </div>
     </div></section>
-    <section className="container about-reach"><span className="eyebrow">{t('PRANË BIZNESIT TUAJ', 'CLOSE TO YOUR BUSINESS')}</span><div><h2>{t('Nga Prishtina, në gjithë Kosovën.', 'From Prishtina, across Kosovo.')}</h2><p>Prishtinë · Pejë · Prizren · Mitrovicë · Gjilan · Gjakovë · Ferizaj</p></div></section>
+    <section className="container about-places section" id="harta"><div className="about-places-head"><span className="eyebrow">{t('PRANË BIZNESIT TUAJ', 'CLOSE TO YOUR BUSINESS')}</span><h2>{t('Nga Prishtina, në gjithë Kosovën.', 'From Prishtina, across Kosovo.')}</h2><p>{t('Zgjidhni një qytet për të parë ku jemi dhe disa nga projektet që kemi realizuar atje.', 'Choose a city to see where we are and some of the work we have done there.')}</p></div><PlacesMap/></section>
     <ContactBand/>
   </main>;
 }

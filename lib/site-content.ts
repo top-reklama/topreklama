@@ -29,11 +29,16 @@ export const faq:[Pair,Pair][]=[
 // Where each project was installed, by project id, taken from the captions of the Instagram posts.
 // Towns outside the seven offices (Istog, Vushtrri, Podujevë) show on the map as project locations.
 // Not tagged because no post names a place: American Retail Park, the printed flags, Pakketo, KFC,
-// Kubeti, Kolegji Heimerer and the studio pieces. Add them here once confirmed.
+// Kubeti, Kolegji Heimerer, the studio pieces, MINNA, Dhurata Sadiku, NLB, Aquavita, Prince Caffe,
+// Gjirafa, Termoteknika, LC Waikiki, Grand Bau Gruda, Çardak and Jona Dent. Add them here once confirmed.
 export const projectCities:Record<string,string>={
   interex:'Prishtinë',altera:'Prishtinë','ximi-v':'Prishtinë',
   'top-office':'Pejë','gafuri-dent':'Pejë','smile-park':'Pejë','devolli-gold':'Pejë',esthetic:'Pejë',
   'libraria-dukagjini':'Pejë','dukagjini-exterior':'Pejë','dukagjini-blade':'Pejë','interex-totem':'Pejë',
   unicron:'Pejë','sola-bus':'Pejë','peja-billboards':'Pejë','sola-billboard':'Pejë',
   'hotel-trofta':'Istog',bos:'Istog','hebs-shawarma':'Vushtrri','jysk-podujeve':'Podujevë',
+  fishop:'Prishtinë','dukagjini-center':'Prishtinë',
+  'te-arapi':'Pejë','arb-dentistry':'Pejë','elko-electric':'Pejë','restaurant-univers':'Pejë','duke-lounge':'Pejë',
+  // Rugova lies within the municipality of Pejë.
+  'eko-resort-malesia':'Pejë',ervini:'Istog',
 };
