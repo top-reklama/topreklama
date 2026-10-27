@@ -1,7 +1,13 @@
 import assert from'node:assert/strict';import{readFile}from'node:fs/promises';
-const base=process.env.TEST_BASE_URL||'http://127.0.0.1:5190';const admin='__sites_local_auth=1',customer='tr_session='+crypto.randomUUID();let checks=0;const eq=(a,b,m)=>{assert.equal(a,b,m);checks++};
+const base=process.env.TEST_BASE_URL||'http://127.0.0.1:5190';// Signs in with the local administrator from .env.local (or ADMIN_EMAIL / ADMIN_PASSWORD in the environment).
+const env=Object.fromEntries((await readFile('.env.local','utf8').catch(()=>'')).split('\n').filter(l=>/^[A-Z_]+=/.test(l)).map(l=>[l.slice(0,l.indexOf('=')),l.slice(l.indexOf('=')+1)]));const email=process.env.ADMIN_EMAIL||env.ADMIN_EMAIL,password=process.env.ADMIN_PASSWORD||env.ADMIN_PASSWORD;
+const login=(e,p)=>fetch(base+'/api/admin/session',{method:'POST',headers:{'Content-Type':'application/json',Origin:base,'cf-connecting-ip':'198.18.'+Math.floor(Math.random()*250)+'.'+Math.floor(Math.random()*250)},body:JSON.stringify({email:e,password:p})});
+const wrong=await login(email,password+'x');const signedIn=await login(email,password);const admin=(signedIn.headers.get('set-cookie')||'').split(';')[0];const customer='tr_session='+crypto.randomUUID();let checks=0;const eq=(a,b,m)=>{assert.equal(a,b,m);checks++};
 async function req(path,init={},cookie=admin){const r=await fetch(base+path,{...init,headers:{Cookie:cookie,Origin:base,...init.headers}});const raw=await r.text();let data;try{data=JSON.parse(raw)}catch{data=raw}return{status:r.status,data}}
 const post=(data,method='POST')=>({method,headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+eq(wrong.status,401,'a wrong password is refused');eq(signedIn.status,200,'the administrator can sign in');assert.ok(admin.startsWith('tr_admin='));checks++;
+eq((await req('/api/admin/orders',{headers:{'oai-authenticated-user-id':'x','oai-authenticated-user-email':email}},customer)).status,403,'forged platform identity headers grant nothing');
+eq((await req('/api/admin/orders',{},'tr_admin=9999999999.forged')).status,403,'a forged admin cookie is refused');
 eq((await req('/api/admin/orders',{},customer)).status,403,'customer cannot read admin inbox');eq((await req('/api/admin/projects',{},customer)).status,403);eq((await req('/api/admin/session')).status,200);
 const bytes=await readFile('public/assets/logo.png');const uploadForm=()=>{const f=new FormData();f.append('file',new File([bytes],'LOCAL-TEST-logo.png',{type:'image/png'}));return f};
 const artwork=await req('/api/uploads',{method:'POST',body:uploadForm()},customer);eq(artwork.status,201);

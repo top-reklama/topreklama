@@ -1,0 +1,4 @@
+import{context,json,body,fail}from'@/lib/server';import{blobConfigured}from'@/lib/platform';import{startUpload,type UploadKind}from'@/lib/upload-server';
+// Tells the browser how to upload: straight to Blob on Vercel (with a path reserved for this visitor), or through
+// the form routes when Blob is not configured (local development).
+export async function POST(req:Request){const ctx=context(req);try{const v=await body(req,2000) as {kind?:unknown;size?:unknown;type?:unknown};const kind:UploadKind=v.kind==='portfolio'?'portfolio':'artwork';if(!blobConfigured())return json({direct:false},200,ctx.cookie);const r=await startUpload(req,kind,Number(v.size),String(v.type||''));return r.status===200?json({direct:true,pathname:r.pathname},200,ctx.cookie):json({error:r.error},r.status,ctx.cookie)}catch(e){return fail(e,ctx.cookie)}}

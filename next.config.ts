@@ -16,14 +16,19 @@ const noFraming = [
 ];
 
 const nextConfig: NextConfig = {
+  // The project folder is the app root, even when a parent folder holds another lockfile.
+  outputFileTracingRoot: process.cwd(),
   async headers() {
-    // The first rule to set a header wins, so the stricter rules come first.
+    // Next.js applies every matching rule and the last one wins for a repeated header, so the general rules come
+    // first and the stricter admin/API rules after them.
     return [
+      { source: "/", headers: securityHeaders },
+      { source: "/:path*", headers: securityHeaders },
+      // Photos and fonts rarely change; a week of caching with background refresh keeps pages fast.
+      { source: "/assets/:path*", headers: [{ key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=86400" }] },
       { source: "/admin", headers: noFraming },
       { source: "/admin/:path*", headers: noFraming },
       { source: "/api/:path*", headers: noFraming },
-      { source: "/", headers: securityHeaders },
-      { source: "/:path*", headers: securityHeaders },
     ];
   },
 };

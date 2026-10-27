@@ -2,7 +2,7 @@
 import Link from '@/components/site-link';import{PageMotion}from'./motion';import{usePathname}from'next/navigation';import{createContext,useContext,useState,useEffect,type ReactNode}from'react';
 export type Lang='sq'|'en';const Language=createContext<{lang:Lang;t:(a:string,b:string)=>string}>({lang:'sq',t:a=>a});export const useLanguage=()=>useContext(Language);
 // English pages live under /en; these map a path between the two languages.
-const unlocalized=/^\/(api|assets|admin|signin-with-chatgpt|signout-with-chatgpt|callback)(\/|$|\?)/;
+const unlocalized=/^\/(api|assets|admin)(\/|$|\?)/;
 export function basePath(path:string){return path==='/en'?'/':path.startsWith('/en/')?path.slice(3):path}
 export function localizedPath(href:string,lang:Lang){if(!href.startsWith('/')||href.startsWith('//')||unlocalized.test(href))return href;const base=basePath(href);return lang==='en'?(base==='/'?'/en':base.startsWith('/?')||base.startsWith('/#')?'/en'+base.slice(1):'/en'+base):base}
 export function SiteShell({children}:{children:ReactNode}){const rawPath=usePathname();const urlLang:Lang=rawPath==='/en'||rawPath.startsWith('/en/')?'en':'sq';const path=basePath(rawPath);const[lang,setLang]=useState<Lang>(urlLang),[menu,setMenu]=useState(false);

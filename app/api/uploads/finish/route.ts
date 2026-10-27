@@ -1,0 +1,2 @@
+import{context,json,body,fail}from'@/lib/server';import{finishUpload,type UploadKind}from'@/lib/upload-server';
+export async function POST(req:Request){const ctx=context(req);try{const v=await body(req,2000) as {kind?:unknown;pathname?:unknown;name?:unknown};const kind:UploadKind=v.kind==='portfolio'?'portfolio':'artwork';const r=await finishUpload(req,kind,String(v.pathname||''),String(v.name||''));return 'body' in r?json(r.body,r.status,ctx.cookie):json({error:r.error},r.status,ctx.cookie)}catch(e){return fail(e,ctx.cookie)}}

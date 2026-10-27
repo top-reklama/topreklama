@@ -28,4 +28,8 @@ const csrf=await request('/api/designs',{...j({design}),headers:{'Content-Type':
 assert.equal((await request('/api/production')).status,503,'ERP endpoint fails closed before configuration');
 const all=await request('/api/orders');assert.equal(all.data.orders.length,1,'retry created exactly one order');
 const trapOwner=`tr_session=${crypto.randomUUID()}`;const trapped=await request('/api/orders',j({requestId:crypto.randomUUID(),kind:'quote',productId:'general',contact:payload.contact,previewIds:[],printIds:[],artworkIds:[],website:'http://spam.example'}),trapOwner);assert.equal(trapped.status,201,'spam trap answers like a success');assert.equal((await request('/api/orders',{},trapOwner)).data.orders.length,0,'spam trap stores nothing');
-console.log(JSON.stringify({passed:21,order:first.data.reference,scope:'isolated local test session; no external ERP request'},null,2));
+// Direct uploads: offline the server sends browsers to the form route; a path that is not the visitor's is refused.
+const startUpload=await request('/api/uploads/start',j({kind:'artwork',size:1000,type:'image/png'}));assert.equal(startUpload.status,200);assert.equal(typeof startUpload.data.direct,'boolean','the upload start answers');
+const foreign=await request('/api/uploads/finish',j({kind:'artwork',pathname:'artwork/someone-else/'+crypto.randomUUID(),name:'x.png'}));assert.equal(foreign.status,403,'another visitor\'s upload path is refused');
+const portfolioByGuest=await request('/api/uploads/finish',j({kind:'portfolio',pathname:'portfolio/admin/'+crypto.randomUUID(),name:'x.png'}));assert.equal(portfolioByGuest.status,403,'visitors cannot register portfolio photos');
+console.log(JSON.stringify({passed:24,order:first.data.reference,scope:'isolated local test session; no external ERP request'},null,2));

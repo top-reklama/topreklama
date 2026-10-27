@@ -30,6 +30,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -57,3 +58,6 @@ next-env.d.ts
 
 .npm-cache/
 .dev.vars*
+
+# Local database and uploaded files (development only)
+/.data/
