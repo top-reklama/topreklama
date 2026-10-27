@@ -3,8 +3,10 @@ import{useState,useRef,useEffect}from'react';
 import Link from'./site-link';
 import{useLanguage}from'./site-shell';
 const work=[
- {id:'interex',name:'Interex',title:['Reklama','ndriçuese.','Illuminated','signage.'],image:'instagram/interex-day-professional.webp',position:'50% 55%'},
+ {id:'interex',name:'Interex',title:['Reklama','ndriçuese.','Illuminated','signage.'],image:'instagram/interex-night-professional.webp',position:'50% 40%'},
  {id:'kfc',name:'KFC',title:['Shkronja','me dimension.','Dimensional','lettering.'],image:'kfc-professional.webp',position:'50% 35%'},
+ {id:'hotel-trofta',name:'Hotel Trofta',title:['Shkronja','mbi horizont.','Lettering','on the skyline.'],image:'instagram/portfolio-2026/hotel-trofta-professional.webp',position:'50% 30%'},
+ {id:'devolli-gold',name:'Devolli Gold',title:['Fasadë','premium.','A premium','facade.'],image:'instagram/portfolio-2026/devolli-gold-professional.webp',position:'68% 45%'},
  {id:'sola-bus',name:'Sola',title:['Autografikë.','Në lëvizje.','Vehicle graphics.','On the move.'],image:'instagram/sola-professional-v2.webp',position:'50% 48%'}
 ];
 function Arrow({back=false}:{back?:boolean}){return <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d={back?'M20 12H4m6-6-6 6 6 6':'M4 12h16m-6-6 6 6-6 6'} stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>}
