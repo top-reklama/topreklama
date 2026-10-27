@@ -766,3 +766,5 @@ html{scroll-padding-top:96px}
 @media(max-width:900px){.products-intro{grid-template-columns:1fr;gap:32px}.products-online-grid{grid-template-columns:1fr}.products-project{padding-block:60px}.products-project-row{grid-template-columns:1fr;gap:20px;padding:14px}}
 @media(max-width:560px){.products-online-card{grid-template-columns:1fr;padding:16px}.products-online-visual{aspect-ratio:4/3}.products-steps{grid-template-columns:1fr}.products-steps li{padding:14px 0 0}.products-project-work a{width:96px}}
 .products-intro h1{margin-bottom:22px}
+/* The van and billboard photos sit on white; multiply lets the grey panel show through, keeping their shadows */
+.service-block#autografike .service-block-lead img,.service-block#billborde .service-block-lead img,.service-cover.branded.is-contained>img,.products-project-row:nth-child(3) .products-project-brand img,.products-project-row:nth-child(5) .products-project-brand img{mix-blend-mode:multiply}
