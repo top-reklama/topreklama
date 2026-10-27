@@ -815,3 +815,15 @@ html{scroll-padding-top:96px}
  .studio-page label,.studio-page .workspace-note,.studio-page .local-save-note,.studio-page span{font-size:max(12px,1em)}
  .studio-page label,.studio-page .workspace-note,.studio-page .local-save-note{font-size:12px!important}
 }
+
+/* City details: factory address or phone numbers */
+.place-details{display:flex;flex-direction:column;gap:4px}
+.place-kind{font-size:11px;letter-spacing:1.1px;text-transform:uppercase;font-weight:700;color:var(--brand)}
+.place-address{color:var(--muted)}
+.place-phones{display:flex;flex-wrap:wrap;gap:4px 14px}
+.place-phones a{color:var(--ink);font-weight:600;text-decoration:none;padding-block:4px}
+.place-phones a:hover{color:var(--brand)}
+.location-tag{font-style:normal;font-size:11px;letter-spacing:1.1px;text-transform:uppercase;font-weight:700;color:var(--brand);margin-left:auto;align-self:center}
+.contact-other-cities{color:var(--muted);font-size:13px;margin-top:14px}
+.map-info .place-kind{display:none}
+.location-item .location-tag{display:inline-block;margin-left:12px;vertical-align:middle;font-size:11px;padding:3px 8px;border:1px solid currentColor;border-radius:999px;line-height:1.2;position:relative;top:-2px}

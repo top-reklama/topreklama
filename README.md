@@ -76,7 +76,7 @@ The hosted review starts owner-private. Local/public-compatible guests receive a
 
 - Current phone and WhatsApp/Viber routing; the proposal's +383 49 750 460 is used.
 - Actual product SKUs, materials, garment colors/sizes, printable regions, print methods, minimums and pricing.
-- Six non-HQ street addresses and hours.
+- Factory addresses (Prishtinë, Pejë) and per-city phone numbers come from the previous site, top-reklama.com, converted to +383; they live in `lib/locations.ts`. Confirm them, and whether the main number +383 49 750 460 and info@topreklama.net are still current (the old site used info@top-reklama.com).
 - ERP integration. Operator email alerts are built in (see Request notifications) and need a Resend key.
 - Original team/workshop photography and approval to publish third-party customer logos.
 
