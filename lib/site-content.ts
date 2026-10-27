@@ -44,4 +44,25 @@ export const projectCities:Record<string,string>={
   cisco:'Pejë','ip-petrol':'Komoran',iwash:'Komoran',
   // Rruga B is in Prishtinë.
   lochky:'Prishtinë',
+  // Central Park, Prishtina Mall and Klan Arena: the captions name Central Park as Prishtinë.
+  'central-park':'Prishtinë',vitaland:'Prishtinë','birra-peja-citybox':'Prishtinë','go-city-lightbox':'Prishtinë','hebs-central-park':'Prishtinë','interex-central-park':'Prishtinë','dukagjini-central-park':'Prishtinë',
+  'lochky-mall':'Prishtinë','dukagjini-prishtina-mall':'Prishtinë','hebs-led-lightboxes':'Prishtinë',
+  'hebs-gjilan':'Gjilan','my-shawarma':'Gjilan','jysk-interior':'Mitrovicë',
 };
+
+// Projects for the same client, so each project page can show the client's other work. Separate companies with
+// similar names (ELKO and ELKO Electric) are kept apart.
+const clientGroups:Record<string,string[]>={
+  'Interex':['interex','interex-totem','american-retail','printed-flags','interex-information','interex-american-retail','interex-central-park'],
+  'HEB’S & My Shawarma':['hebs-shawarma','hebs-gjilan','my-shawarma','hebs-led-lightboxes','hebs-central-park','ip-petrol'],
+  'Libraria Dukagjini':['libraria-dukagjini','dukagjini-exterior','dukagjini-blade','dukagjini-central-park','dukagjini-prishtina-mall'],
+  'ELKO':['elko-shpk','elko-facade','elko-group'],
+  'Birra Peja':['peja-billboards','aquavita-banner','birra-peja-citybox','birra-peja-banner'],
+  'Sola · Devolli Group':['sola-bus','sola-billboard','devolli-wrap'],
+  'LC Waikiki':['lc-waikiki','lc-waikiki-festive','lc-window-branding'],
+  'JYSK':['jysk-podujeve','jysk-interior'],'NLB Banka':['nlb-bank','nlb-glass'],'MINNA Fashion':['minna-fashion','minna-facade'],
+  'Lochky':['lochky','lochky-mall'],'Comodita Home':['comodita-wrap','comodita-van'],'Termoteknika':['termoteknika','termoteknika-totem'],
+  'GO+':['go-plus','go-city-lightbox'],'Unicron':['unicron','unicron-totem'],'Prince Caffe':['prince-caffe','prince-display'],'IWASH':['iwash','ip-petrol'],
+};
+export const projectClient:Record<string,{name:string;ids:string[]}>=Object.fromEntries(Object.entries(clientGroups).flatMap(([name,ids])=>ids.map(id=>[id,{name,ids}])));
+
