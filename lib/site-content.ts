@@ -41,4 +41,5 @@ export const projectCities:Record<string,string>={
   'te-arapi':'Pejë','arb-dentistry':'Pejë','elko-electric':'Pejë','restaurant-univers':'Pejë','duke-lounge':'Pejë',
   // Rugova lies within the municipality of Pejë.
   'eko-resort-malesia':'Pejë',ervini:'Istog',
+  cisco:'Pejë','ip-petrol':'Komoran',iwash:'Komoran',
 };

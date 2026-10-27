@@ -4,7 +4,7 @@ import{useEffect,useLayoutEffect,useRef}from'react';import type{Map as LeafletMa
 export const cityPoints:Record<string,[number,number]>={'Prishtinë':[42.6629,21.1655],'Pejë':[42.6593,20.2887],'Prizren':[42.2139,20.7397],'Mitrovicë':[42.8914,20.866],'Gjilan':[42.4635,21.4694],'Gjakovë':[42.3803,20.4308],'Ferizaj':[42.3702,21.1553]};
 const hq='Prishtinë';
 // Towns with finished projects but no office; drawn as smaller pins.
-export const projectTowns:Record<string,[number,number]>={'Istog':[42.7808,20.4875],'Vushtrri':[42.8231,20.9675],'Podujevë':[42.9106,21.1931]};
+export const projectTowns:Record<string,[number,number]>={'Istog':[42.7808,20.4875],'Vushtrri':[42.8231,20.9675],'Podujevë':[42.9106,21.1931],'Komoran':[42.6108,20.8939]};
 const allPoints={...cityPoints,...projectTowns};
 // A real, draggable map (OpenStreetMap tiles, toned down to grey in CSS). Choosing a city glides the map to it;
 // null shows all seven. Leaflet loads only in the browser, after the page has rendered.
