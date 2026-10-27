@@ -25,3 +25,15 @@ export const faq:[Pair,Pair][]=[
   [['A më ndihmoni me dizajnin?','Can you help with the design?'],['Po. Nëse keni vetëm idenë ose logon, ekipi ynë e përgatit dizajnin dhe ju propozon materialin e duhur.','Yes. If you only have an idea or a logo, our team prepares the design and suggests the right material.']],
   [['Po lejet për reklamë në fasadë?','What about permits for a facade sign?'],['Lejet i lëshon komuna. Ju këshillojmë për përmasat dhe dokumentet që zakonisht kërkohen për projektin tuaj.','Permits are issued by the municipality. We advise you on the dimensions and documents usually required for your project.']],
 ];
+
+// Where each project was installed, by project id, taken from the captions of the Instagram posts.
+// Towns outside the seven offices (Istog, Vushtrri, Podujevë) show on the map as project locations.
+// Not tagged because no post names a place: American Retail Park, the printed flags, Pakketo, KFC,
+// Kubeti, Kolegji Heimerer and the studio pieces. Add them here once confirmed.
+export const projectCities:Record<string,string>={
+  interex:'Prishtinë',altera:'Prishtinë','ximi-v':'Prishtinë',
+  'top-office':'Pejë','gafuri-dent':'Pejë','smile-park':'Pejë','devolli-gold':'Pejë',esthetic:'Pejë',
+  'libraria-dukagjini':'Pejë','dukagjini-exterior':'Pejë','dukagjini-blade':'Pejë','interex-totem':'Pejë',
+  unicron:'Pejë','sola-bus':'Pejë','peja-billboards':'Pejë','sola-billboard':'Pejë',
+  'hotel-trofta':'Istog',bos:'Istog','hebs-shawarma':'Vushtrri','jysk-podujeve':'Podujevë',
+};
