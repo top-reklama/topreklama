@@ -54,6 +54,20 @@ To launch, set these runtime variables in the hosting environment and redeploy:
 
 Saved designs (`/porosite`) and administration stay `noindex` in both modes. Locally, add the same variables to the git-ignored `.dev.vars`.
 
+## Request notifications
+
+Every quote request and studio order is stored for review in `/admin`. To also receive an email for each one, create a [Resend](https://resend.com) account, verify the sending domain, and set these runtime variables:
+
+- `RESEND_API_KEY` — the Resend API key (a secret).
+- `NOTIFY_EMAIL` — who receives the alerts; separate several addresses with commas.
+- `NOTIFY_FROM` — the sender, on the verified domain (defaults to `Top Reklama <njoftime@topreklama.net>`).
+
+Replying to the email answers the customer directly. Without the first two variables no email is sent, and a failed delivery never loses the request.
+
+## Content to fill in
+
+`lib/site-content.ts` holds the client quotes, per-service starting prices and lead times, project stories and the frequent questions. The quotes, prices, lead times and stories sections stay hidden until entries are added, so nothing unconfirmed is shown. Review the permit and design answers in the questions before launch.
+
 ## Access and accounts
 
 The hosted review starts owner-private. Local/public-compatible guests receive an unguessable HttpOnly session cookie. Signed-in Sites visitors use their platform identity. New signed-in records are available across sessions under that identity; anonymous records remain tied to the device cookie. Existing guest designs are not automatically migrated on sign-in. Production staff access and notification delivery must be configured with the actual operating environment before a public store launch.
@@ -63,7 +77,7 @@ The hosted review starts owner-private. Local/public-compatible guests receive a
 - Current phone and WhatsApp/Viber routing; the proposal's +383 49 750 460 is used.
 - Actual product SKUs, materials, garment colors/sizes, printable regions, print methods, minimums and pricing.
 - Six non-HQ street addresses and hours.
-- ERP integration and operator notifications.
+- ERP integration. Operator email alerts are built in (see Request notifications) and need a Resend key.
 - Original team/workshop photography and approval to publish third-party customer logos.
 
 ## Visual assets
