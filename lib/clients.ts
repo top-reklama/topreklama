@@ -5,6 +5,6 @@ export function clientLogo(id:number){return '/assets/clients/client-'+String(id
 
 // Logos that have a matching project open its photos; the rest open the client archive. Matched by brand,
 // so similar names that are different companies (Elkos Group and ELKO, KB Peja and Birra Peja) stay apart.
-export const clientProjects:Record<number,string>={3:'vita-lightbox',13:'vita-lightbox',22:'vita-lightbox',70:'vita-lightbox',84:'vita-lightbox',8:'heimerer',20:'prince-caffe',23:'prince-caffe',24:'dukagjini-center',30:'jysk-podujeve',49:'devolli-wrap',79:'interex',82:'nlb-bank'};
+export const clientProjects:Record<number,string>={3:'vita-lightbox',13:'vita-lightbox',22:'vita-lightbox',70:'vita-lightbox',84:'vita-lightbox',8:'heimerer',20:'prince-caffe',23:'prince-caffe',24:'dukagjini-group',26:'finnesa-pickup',44:'emerald-hotel',46:'ipko-citylight',47:'wolker',69:'tango-truck',89:'prince-vehicle',30:'jysk-podujeve',49:'devolli-wrap',79:'interex',82:'nlb-bank'};
 export const clientHref=(id:number)=>clientProjects[id]?'/projektet?project='+clientProjects[id]:'/klientet?client='+id;
 

@@ -48,6 +48,8 @@ export const projectCities:Record<string,string>={
   'central-park':'Prishtinë',vitaland:'Prishtinë','birra-peja-citybox':'Prishtinë','go-city-lightbox':'Prishtinë','hebs-central-park':'Prishtinë','interex-central-park':'Prishtinë','dukagjini-central-park':'Prishtinë',
   'lochky-mall':'Prishtinë','dukagjini-prishtina-mall':'Prishtinë','hebs-led-lightboxes':'Prishtinë',
   'hebs-gjilan':'Gjilan','my-shawarma':'Gjilan','jysk-interior':'Mitrovicë',
+  // #peja tag; Hotel Dukagjini is the Pejë hotel the bookstore caption names.
+  'ipko-citylight':'Pejë','hotel-dukagjini':'Pejë',
 };
 
 // Projects for the same client, so each project page can show the client's other work. Separate companies with
@@ -58,11 +60,12 @@ const clientGroups:Record<string,string[]>={
   'Libraria Dukagjini':['libraria-dukagjini','dukagjini-exterior','dukagjini-blade','dukagjini-central-park','dukagjini-prishtina-mall'],
   'ELKO':['elko-shpk','elko-facade','elko-group'],
   'Birra Peja':['peja-billboards','aquavita-banner','birra-peja-citybox','birra-peja-banner'],
-  'Sola · Devolli Group':['sola-bus','sola-billboard','devolli-wrap'],
+  'Devolli Group':['sola-bus','sola-billboard','devolli-wrap','sola-lasko-mural','sola-swiss','finnesa-pickup','pascalin-fleet','prince-vehicle'],
+  'Dukagjini Group':['dukagjini-group','hotel-dukagjini','dukagjini-center'],
   'LC Waikiki':['lc-waikiki','lc-waikiki-festive','lc-window-branding'],
   'JYSK':['jysk-podujeve','jysk-interior'],'NLB Banka':['nlb-bank','nlb-glass'],'MINNA Fashion':['minna-fashion','minna-facade'],
   'Lochky':['lochky','lochky-mall'],'Comodita Home':['comodita-wrap','comodita-van'],'Termoteknika':['termoteknika','termoteknika-totem'],
-  'GO+':['go-plus','go-city-lightbox'],'Unicron':['unicron','unicron-totem'],'Prince Caffe':['prince-caffe','prince-display'],'IWASH':['iwash','ip-petrol'],
+  'GO+':['go-plus','go-city-lightbox','go-matte-wrap'],'Unicron':['unicron','unicron-totem'],'Prince Caffe':['prince-caffe','prince-display'],'IWASH':['iwash','ip-petrol'],
 };
 export const projectClient:Record<string,{name:string;ids:string[]}>=Object.fromEntries(Object.entries(clientGroups).flatMap(([name,ids])=>ids.map(id=>[id,{name,ids}])));
 

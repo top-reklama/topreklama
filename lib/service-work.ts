@@ -3,7 +3,7 @@ import{archiveProjects,type Project}from'./all-projects';
 export const serviceSlugs=['ndricuese','3d','autografike','shtyp','billborde','promocionale'] as const;
 export type ServiceSlug=typeof serviceSlugs[number];
 export const serviceBrand:Record<ServiceSlug,string>={ndricuese:'service-illuminated.webp','3d':'service-signage.webp',autografike:'van-top.webp',shtyp:'service-print-applied.webp',billborde:'service-billboard-branded.webp',promocionale:'merch-kit.webp'};
-const billboards=['peja-billboards','sola-billboard','aquavita-banner','birra-peja-citybox','birra-peja-banner','go-city-lightbox'];
+const billboards=['peja-billboards','sola-billboard','aquavita-banner','birra-peja-citybox','birra-peja-banner','go-city-lightbox','ipko-citylight','wolker'];
 const belongs:Record<ServiceSlug,(p:Project)=>boolean>={
   ndricuese:p=>p.category==='Reklama ndriçuese',
   '3d':p=>p.category==='Reklama 3D',
