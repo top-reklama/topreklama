@@ -1,4 +1,4 @@
-import type{Metadata,Viewport}from'next';import'./globals.css';import{SiteShell}from'@/components/site-shell';import{siteUrl,shareImage,languageAlternates,indexable}from'./site-url';
+import type{Metadata,Viewport}from'next';import'leaflet/dist/leaflet.css';import'./globals.css';import{SiteShell}from'@/components/site-shell';import{siteUrl,shareImage,languageAlternates,indexable}from'./site-url';
 export const viewport:Viewport={width:'device-width',initialScale:1,viewportFit:'cover'};
 export const metadata:Metadata={title:{default:'Top Reklama — Reklama, shtyp & personalizim',template:'%s | Top Reklama'},description:'Prodhim reklamash, shtyp digjital dhe produkte të personalizuara. Nga ideja te montimi, që nga viti 2006.',icons:{icon:'/assets/symbol.svg'},metadataBase:new URL(siteUrl),alternates:languageAlternates('/'),openGraph:{type:'website',siteName:'Top Reklama',locale:'sq_AL',url:'/',images:[shareImage]},twitter:{card:'summary_large_image'},...(indexable?{}:{robots:{index:false,follow:false}})};
 // Business details for search engines, taken from the contact information shown on the site.
